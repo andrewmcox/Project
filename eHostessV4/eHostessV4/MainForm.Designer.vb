@@ -33,8 +33,11 @@ Partial Class MainForm
         Me.PartyToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TableToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ActiveStaffDataGrid = New System.Windows.Forms.DataGridView()
-        Me.EHostessDataSet = New eHostessV4.eHostessDataSet()
+        Me.StafffnameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.StafflnameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.StaffmaxtableDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.StaffBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.EHostessDataSet = New eHostessV4.eHostessDataSet()
         Me.StaffTableAdapter = New eHostessV4.eHostessDataSetTableAdapters.StaffTableAdapter()
         Me.PartyBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.PartyTableAdapter = New eHostessV4.eHostessDataSetTableAdapters.PartyTableAdapter()
@@ -44,9 +47,6 @@ Partial Class MainForm
         Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.StafffnameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.StafflnameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.StaffmaxtableDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Table12 = New System.Windows.Forms.Button()
         Me.Table2 = New System.Windows.Forms.Button()
         Me.Table3 = New System.Windows.Forms.Button()
@@ -60,20 +60,26 @@ Partial Class MainForm
         Me.Table11 = New System.Windows.Forms.Button()
         Me.Table13 = New System.Windows.Forms.Button()
         Me.Table14 = New System.Windows.Forms.Button()
+        Me.ShapeContainer1 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
+        Me.RectangleShape1 = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
+        Me.ActiveStaffLabel = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
         Me.MenuStrip1.SuspendLayout()
         CType(Me.ActiveStaffDataGrid, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EHostessDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.StaffBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EHostessDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PartyBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PartyDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Table1
         '
-        Me.Table1.Location = New System.Drawing.Point(394, 100)
+        Me.Table1.Location = New System.Drawing.Point(391, 92)
         Me.Table1.Name = "Table1"
         Me.Table1.Size = New System.Drawing.Size(75, 23)
         Me.Table1.TabIndex = 0
+        Me.Table1.Tag = "1"
         Me.Table1.Text = "Table 1"
         Me.Table1.UseVisualStyleBackColor = True
         '
@@ -141,15 +147,33 @@ Partial Class MainForm
         Me.ActiveStaffDataGrid.Size = New System.Drawing.Size(350, 439)
         Me.ActiveStaffDataGrid.TabIndex = 1
         '
-        'EHostessDataSet
+        'StafffnameDataGridViewTextBoxColumn
         '
-        Me.EHostessDataSet.DataSetName = "eHostessDataSet"
-        Me.EHostessDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        Me.StafffnameDataGridViewTextBoxColumn.DataPropertyName = "staff_fname"
+        Me.StafffnameDataGridViewTextBoxColumn.HeaderText = "staff_fname"
+        Me.StafffnameDataGridViewTextBoxColumn.Name = "StafffnameDataGridViewTextBoxColumn"
+        '
+        'StafflnameDataGridViewTextBoxColumn
+        '
+        Me.StafflnameDataGridViewTextBoxColumn.DataPropertyName = "staff_lname"
+        Me.StafflnameDataGridViewTextBoxColumn.HeaderText = "staff_lname"
+        Me.StafflnameDataGridViewTextBoxColumn.Name = "StafflnameDataGridViewTextBoxColumn"
+        '
+        'StaffmaxtableDataGridViewTextBoxColumn
+        '
+        Me.StaffmaxtableDataGridViewTextBoxColumn.DataPropertyName = "staff_max_table"
+        Me.StaffmaxtableDataGridViewTextBoxColumn.HeaderText = "staff_max_table"
+        Me.StaffmaxtableDataGridViewTextBoxColumn.Name = "StaffmaxtableDataGridViewTextBoxColumn"
         '
         'StaffBindingSource
         '
         Me.StaffBindingSource.DataMember = "Staff"
         Me.StaffBindingSource.DataSource = Me.EHostessDataSet
+        '
+        'EHostessDataSet
+        '
+        Me.EHostessDataSet.DataSetName = "eHostessDataSet"
+        Me.EHostessDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'StaffTableAdapter
         '
@@ -211,146 +235,190 @@ Partial Class MainForm
         Me.DataGridViewTextBoxColumn5.HeaderText = "party_size"
         Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
         '
-        'StafffnameDataGridViewTextBoxColumn
-        '
-        Me.StafffnameDataGridViewTextBoxColumn.DataPropertyName = "staff_fname"
-        Me.StafffnameDataGridViewTextBoxColumn.HeaderText = "staff_fname"
-        Me.StafffnameDataGridViewTextBoxColumn.Name = "StafffnameDataGridViewTextBoxColumn"
-        '
-        'StafflnameDataGridViewTextBoxColumn
-        '
-        Me.StafflnameDataGridViewTextBoxColumn.DataPropertyName = "staff_lname"
-        Me.StafflnameDataGridViewTextBoxColumn.HeaderText = "staff_lname"
-        Me.StafflnameDataGridViewTextBoxColumn.Name = "StafflnameDataGridViewTextBoxColumn"
-        '
-        'StaffmaxtableDataGridViewTextBoxColumn
-        '
-        Me.StaffmaxtableDataGridViewTextBoxColumn.DataPropertyName = "staff_max_table"
-        Me.StaffmaxtableDataGridViewTextBoxColumn.HeaderText = "staff_max_table"
-        Me.StaffmaxtableDataGridViewTextBoxColumn.Name = "StaffmaxtableDataGridViewTextBoxColumn"
-        '
         'Table12
         '
-        Me.Table12.Location = New System.Drawing.Point(719, 332)
+        Me.Table12.Location = New System.Drawing.Point(716, 324)
         Me.Table12.Name = "Table12"
         Me.Table12.Size = New System.Drawing.Size(75, 23)
         Me.Table12.TabIndex = 4
+        Me.Table12.Tag = "12"
         Me.Table12.Text = "Table 12"
         Me.Table12.UseVisualStyleBackColor = True
         '
         'Table2
         '
-        Me.Table2.Location = New System.Drawing.Point(508, 100)
+        Me.Table2.Location = New System.Drawing.Point(505, 92)
         Me.Table2.Name = "Table2"
         Me.Table2.Size = New System.Drawing.Size(75, 23)
         Me.Table2.TabIndex = 5
+        Me.Table2.Tag = "2"
         Me.Table2.Text = "Table 2"
         Me.Table2.UseVisualStyleBackColor = True
         '
         'Table3
         '
-        Me.Table3.Location = New System.Drawing.Point(394, 146)
+        Me.Table3.Location = New System.Drawing.Point(391, 138)
         Me.Table3.Name = "Table3"
         Me.Table3.Size = New System.Drawing.Size(75, 23)
         Me.Table3.TabIndex = 6
+        Me.Table3.Tag = "3"
         Me.Table3.Text = "Table 3"
         Me.Table3.UseVisualStyleBackColor = True
         '
         'Table4
         '
-        Me.Table4.Location = New System.Drawing.Point(508, 146)
+        Me.Table4.Location = New System.Drawing.Point(505, 138)
         Me.Table4.Name = "Table4"
         Me.Table4.Size = New System.Drawing.Size(75, 23)
         Me.Table4.TabIndex = 7
+        Me.Table4.Tag = "4"
         Me.Table4.Text = "Table 4"
         Me.Table4.UseVisualStyleBackColor = True
         '
         'Table5
         '
-        Me.Table5.Location = New System.Drawing.Point(394, 189)
+        Me.Table5.Location = New System.Drawing.Point(391, 181)
         Me.Table5.Name = "Table5"
         Me.Table5.Size = New System.Drawing.Size(75, 23)
         Me.Table5.TabIndex = 8
+        Me.Table5.Tag = "5"
         Me.Table5.Text = "Table 5"
         Me.Table5.UseVisualStyleBackColor = True
         '
         'Table6
         '
-        Me.Table6.Location = New System.Drawing.Point(394, 236)
+        Me.Table6.Location = New System.Drawing.Point(391, 228)
         Me.Table6.Name = "Table6"
         Me.Table6.Size = New System.Drawing.Size(75, 23)
         Me.Table6.TabIndex = 9
+        Me.Table6.Tag = "6"
         Me.Table6.Text = "Table 6"
         Me.Table6.UseVisualStyleBackColor = True
         '
         'Table7
         '
-        Me.Table7.Location = New System.Drawing.Point(394, 288)
+        Me.Table7.Location = New System.Drawing.Point(391, 280)
         Me.Table7.Name = "Table7"
         Me.Table7.Size = New System.Drawing.Size(75, 23)
         Me.Table7.TabIndex = 10
+        Me.Table7.Tag = "7"
         Me.Table7.Text = "Table 7"
         Me.Table7.UseVisualStyleBackColor = True
         '
         'Table8
         '
-        Me.Table8.Location = New System.Drawing.Point(394, 332)
+        Me.Table8.Location = New System.Drawing.Point(391, 324)
         Me.Table8.Name = "Table8"
         Me.Table8.Size = New System.Drawing.Size(75, 23)
         Me.Table8.TabIndex = 11
+        Me.Table8.Tag = "8"
         Me.Table8.Text = "Table 8"
         Me.Table8.UseVisualStyleBackColor = True
         '
         'Table9
         '
-        Me.Table9.Location = New System.Drawing.Point(508, 332)
+        Me.Table9.Location = New System.Drawing.Point(505, 324)
         Me.Table9.Name = "Table9"
         Me.Table9.Size = New System.Drawing.Size(75, 23)
         Me.Table9.TabIndex = 12
+        Me.Table9.Tag = "9"
         Me.Table9.Text = "Table 9"
         Me.Table9.UseVisualStyleBackColor = True
         '
         'Table10
         '
-        Me.Table10.Location = New System.Drawing.Point(619, 332)
+        Me.Table10.Location = New System.Drawing.Point(616, 324)
         Me.Table10.Name = "Table10"
         Me.Table10.Size = New System.Drawing.Size(75, 23)
         Me.Table10.TabIndex = 13
+        Me.Table10.Tag = "10"
         Me.Table10.Text = "Table 10"
         Me.Table10.UseVisualStyleBackColor = True
         '
         'Table11
         '
-        Me.Table11.Location = New System.Drawing.Point(508, 236)
+        Me.Table11.Location = New System.Drawing.Point(505, 228)
         Me.Table11.Name = "Table11"
         Me.Table11.Size = New System.Drawing.Size(75, 23)
         Me.Table11.TabIndex = 14
+        Me.Table11.Tag = "11"
         Me.Table11.Text = "Table 11"
         Me.Table11.UseVisualStyleBackColor = True
         '
         'Table13
         '
-        Me.Table13.Location = New System.Drawing.Point(719, 288)
+        Me.Table13.Location = New System.Drawing.Point(716, 280)
         Me.Table13.Name = "Table13"
         Me.Table13.Size = New System.Drawing.Size(75, 23)
         Me.Table13.TabIndex = 15
+        Me.Table13.Tag = "13"
         Me.Table13.Text = "Table 13"
         Me.Table13.UseVisualStyleBackColor = True
         '
         'Table14
         '
-        Me.Table14.Location = New System.Drawing.Point(719, 236)
+        Me.Table14.Location = New System.Drawing.Point(716, 228)
         Me.Table14.Name = "Table14"
         Me.Table14.Size = New System.Drawing.Size(75, 23)
         Me.Table14.TabIndex = 16
+        Me.Table14.Tag = "14"
         Me.Table14.Text = "Table 14"
         Me.Table14.UseVisualStyleBackColor = True
+        '
+        'ShapeContainer1
+        '
+        Me.ShapeContainer1.Location = New System.Drawing.Point(0, 0)
+        Me.ShapeContainer1.Margin = New System.Windows.Forms.Padding(0)
+        Me.ShapeContainer1.Name = "ShapeContainer1"
+        Me.ShapeContainer1.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape1})
+        Me.ShapeContainer1.Size = New System.Drawing.Size(1274, 622)
+        Me.ShapeContainer1.TabIndex = 17
+        Me.ShapeContainer1.TabStop = False
+        '
+        'RectangleShape1
+        '
+        Me.RectangleShape1.Location = New System.Drawing.Point(384, 65)
+        Me.RectangleShape1.Name = "RectangleShape1"
+        Me.RectangleShape1.Size = New System.Drawing.Size(413, 300)
+        '
+        'ActiveStaffLabel
+        '
+        Me.ActiveStaffLabel.AutoSize = True
+        Me.ActiveStaffLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ActiveStaffLabel.Location = New System.Drawing.Point(132, 27)
+        Me.ActiveStaffLabel.Name = "ActiveStaffLabel"
+        Me.ActiveStaffLabel.Size = New System.Drawing.Size(74, 13)
+        Me.ActiveStaffLabel.TabIndex = 18
+        Me.ActiveStaffLabel.Text = "Active Staff"
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(1009, 27)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(82, 13)
+        Me.Label1.TabIndex = 19
+        Me.Label1.Text = "Party Waitlist"
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(565, 43)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(45, 13)
+        Me.Label2.TabIndex = 20
+        Me.Label2.Text = "Tables"
         '
         'MainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1274, 622)
+        Me.Controls.Add(Me.Label2)
+        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.ActiveStaffLabel)
         Me.Controls.Add(Me.Table14)
         Me.Controls.Add(Me.Table13)
         Me.Controls.Add(Me.Table11)
@@ -368,14 +436,15 @@ Partial Class MainForm
         Me.Controls.Add(Me.ActiveStaffDataGrid)
         Me.Controls.Add(Me.Table1)
         Me.Controls.Add(Me.MenuStrip1)
+        Me.Controls.Add(Me.ShapeContainer1)
         Me.MainMenuStrip = Me.MenuStrip1
         Me.Name = "MainForm"
         Me.Text = "eHostess Main"
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
         CType(Me.ActiveStaffDataGrid, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EHostessDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.StaffBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EHostessDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PartyBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PartyDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
@@ -419,5 +488,10 @@ Partial Class MainForm
     Friend WithEvents Table11 As System.Windows.Forms.Button
     Friend WithEvents Table13 As System.Windows.Forms.Button
     Friend WithEvents Table14 As System.Windows.Forms.Button
+    Friend WithEvents ShapeContainer1 As Microsoft.VisualBasic.PowerPacks.ShapeContainer
+    Friend WithEvents RectangleShape1 As Microsoft.VisualBasic.PowerPacks.RectangleShape
+    Friend WithEvents ActiveStaffLabel As System.Windows.Forms.Label
+    Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents Label2 As System.Windows.Forms.Label
 
 End Class

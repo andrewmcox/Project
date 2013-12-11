@@ -61,6 +61,7 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
@@ -112,6 +113,30 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="PartyForm.Designer.vb">
+      <DependentUpon>PartyForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="PartyForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelectedTableForm.Designer.vb">
+      <DependentUpon>SelectedTableForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SelectedTableForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StaffForm.Designer.vb">
+      <DependentUpon>StaffForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="StaffForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TableForm.Designer.vb">
+      <DependentUpon>TableForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="TableForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MainForm.resx">
@@ -122,6 +147,18 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PartyForm.resx">
+      <DependentUpon>PartyForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SelectedTableForm.resx">
+      <DependentUpon>SelectedTableForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StaffForm.resx">
+      <DependentUpon>StaffForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TableForm.resx">
+      <DependentUpon>TableForm.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
