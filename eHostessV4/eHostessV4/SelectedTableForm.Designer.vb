@@ -56,6 +56,8 @@ Partial Class SelectedTableForm
         Me.Table_wLabel1 = New System.Windows.Forms.Label()
         Me.Table_hLabel1 = New System.Windows.Forms.Label()
         Me.ShapeContainer1 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
+        Me.RectangleShape3 = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
+        Me.RectangleShape2 = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
         Me.RectangleShape1 = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Seating_DetailBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -68,8 +70,6 @@ Partial Class SelectedTableForm
         Me.Staff_fnameLabel1 = New System.Windows.Forms.Label()
         Me.Staff_lnameLabel1 = New System.Windows.Forms.Label()
         Me.Staff_max_tableLabel1 = New System.Windows.Forms.Label()
-        Me.RectangleShape2 = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
-        Me.RectangleShape3 = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.PartyBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -82,6 +82,11 @@ Partial Class SelectedTableForm
         Me.Party_statusLabel1 = New System.Windows.Forms.Label()
         Me.Party_arrival_timeLabel1 = New System.Windows.Forms.Label()
         Me.Party_departure_timeLabel1 = New System.Windows.Forms.Label()
+        Me.AssignmentsTableAdapter = New eHostessV4.eHostessDataSetTableAdapters.AssignmentsTableAdapter()
+        Me.AssignTableButton = New System.Windows.Forms.Button()
+        Me.CompleteAssignmentButton = New System.Windows.Forms.Button()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
         Table_idLabel = New System.Windows.Forms.Label()
         Table_maxLabel = New System.Windows.Forms.Label()
         Table_smokingLabel = New System.Windows.Forms.Label()
@@ -172,6 +177,114 @@ Partial Class SelectedTableForm
         Table_hLabel.TabIndex = 15
         Table_hLabel.Text = "table h:"
         '
+        'Staff_idLabel
+        '
+        Staff_idLabel.AutoSize = True
+        Staff_idLabel.Location = New System.Drawing.Point(58, 99)
+        Staff_idLabel.Name = "Staff_idLabel"
+        Staff_idLabel.Size = New System.Drawing.Size(41, 13)
+        Staff_idLabel.TabIndex = 0
+        Staff_idLabel.Text = "staff id:"
+        '
+        'Staff_fnameLabel
+        '
+        Staff_fnameLabel.AutoSize = True
+        Staff_fnameLabel.Location = New System.Drawing.Point(58, 122)
+        Staff_fnameLabel.Name = "Staff_fnameLabel"
+        Staff_fnameLabel.Size = New System.Drawing.Size(62, 13)
+        Staff_fnameLabel.TabIndex = 2
+        Staff_fnameLabel.Text = "staff fname:"
+        '
+        'Staff_lnameLabel
+        '
+        Staff_lnameLabel.AutoSize = True
+        Staff_lnameLabel.Location = New System.Drawing.Point(58, 145)
+        Staff_lnameLabel.Name = "Staff_lnameLabel"
+        Staff_lnameLabel.Size = New System.Drawing.Size(61, 13)
+        Staff_lnameLabel.TabIndex = 4
+        Staff_lnameLabel.Text = "staff lname:"
+        '
+        'Staff_max_tableLabel
+        '
+        Staff_max_tableLabel.AutoSize = True
+        Staff_max_tableLabel.Location = New System.Drawing.Point(58, 168)
+        Staff_max_tableLabel.Name = "Staff_max_tableLabel"
+        Staff_max_tableLabel.Size = New System.Drawing.Size(78, 13)
+        Staff_max_tableLabel.TabIndex = 6
+        Staff_max_tableLabel.Text = "staff max table:"
+        '
+        'Party_idLabel
+        '
+        Party_idLabel.AutoSize = True
+        Party_idLabel.Location = New System.Drawing.Point(803, 89)
+        Party_idLabel.Name = "Party_idLabel"
+        Party_idLabel.Size = New System.Drawing.Size(44, 13)
+        Party_idLabel.TabIndex = 0
+        Party_idLabel.Text = "party id:"
+        '
+        'Party_nameLabel
+        '
+        Party_nameLabel.AutoSize = True
+        Party_nameLabel.Location = New System.Drawing.Point(803, 112)
+        Party_nameLabel.Name = "Party_nameLabel"
+        Party_nameLabel.Size = New System.Drawing.Size(62, 13)
+        Party_nameLabel.TabIndex = 2
+        Party_nameLabel.Text = "party name:"
+        '
+        'Party_phoneLabel
+        '
+        Party_phoneLabel.AutoSize = True
+        Party_phoneLabel.Location = New System.Drawing.Point(803, 135)
+        Party_phoneLabel.Name = "Party_phoneLabel"
+        Party_phoneLabel.Size = New System.Drawing.Size(66, 13)
+        Party_phoneLabel.TabIndex = 4
+        Party_phoneLabel.Text = "party phone:"
+        '
+        'Party_smokingLabel
+        '
+        Party_smokingLabel.AutoSize = True
+        Party_smokingLabel.Location = New System.Drawing.Point(803, 158)
+        Party_smokingLabel.Name = "Party_smokingLabel"
+        Party_smokingLabel.Size = New System.Drawing.Size(75, 13)
+        Party_smokingLabel.TabIndex = 6
+        Party_smokingLabel.Text = "party smoking:"
+        '
+        'Party_sizeLabel
+        '
+        Party_sizeLabel.AutoSize = True
+        Party_sizeLabel.Location = New System.Drawing.Point(803, 181)
+        Party_sizeLabel.Name = "Party_sizeLabel"
+        Party_sizeLabel.Size = New System.Drawing.Size(54, 13)
+        Party_sizeLabel.TabIndex = 8
+        Party_sizeLabel.Text = "party size:"
+        '
+        'Party_statusLabel
+        '
+        Party_statusLabel.AutoSize = True
+        Party_statusLabel.Location = New System.Drawing.Point(803, 204)
+        Party_statusLabel.Name = "Party_statusLabel"
+        Party_statusLabel.Size = New System.Drawing.Size(64, 13)
+        Party_statusLabel.TabIndex = 10
+        Party_statusLabel.Text = "party status:"
+        '
+        'Party_arrival_timeLabel
+        '
+        Party_arrival_timeLabel.AutoSize = True
+        Party_arrival_timeLabel.Location = New System.Drawing.Point(803, 227)
+        Party_arrival_timeLabel.Name = "Party_arrival_timeLabel"
+        Party_arrival_timeLabel.Size = New System.Drawing.Size(86, 13)
+        Party_arrival_timeLabel.TabIndex = 12
+        Party_arrival_timeLabel.Text = "party arrival time:"
+        '
+        'Party_departure_timeLabel
+        '
+        Party_departure_timeLabel.AutoSize = True
+        Party_departure_timeLabel.Location = New System.Drawing.Point(803, 250)
+        Party_departure_timeLabel.Name = "Party_departure_timeLabel"
+        Party_departure_timeLabel.Size = New System.Drawing.Size(103, 13)
+        Party_departure_timeLabel.TabIndex = 14
+        Party_departure_timeLabel.Text = "party departure time:"
+        '
         'MenuStrip1
         '
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DoneToolStripMenuItem})
@@ -208,6 +321,7 @@ Partial Class SelectedTableForm
         Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
         Me.TableAdapterManager.Party_DetailTableAdapter = Nothing
         Me.TableAdapterManager.PartyTableAdapter = Nothing
+        Me.TableAdapterManager.Seating_DetailTableAdapter = Nothing
         Me.TableAdapterManager.SeatingTableAdapter = Me.SeatingTableAdapter
         Me.TableAdapterManager.StaffTableAdapter = Nothing
         Me.TableAdapterManager.UpdateOrder = eHostessV4.eHostessDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
@@ -285,6 +399,18 @@ Partial Class SelectedTableForm
         Me.ShapeContainer1.TabIndex = 17
         Me.ShapeContainer1.TabStop = False
         '
+        'RectangleShape3
+        '
+        Me.RectangleShape3.Location = New System.Drawing.Point(787, 49)
+        Me.RectangleShape3.Name = "RectangleShape3"
+        Me.RectangleShape3.Size = New System.Drawing.Size(271, 233)
+        '
+        'RectangleShape2
+        '
+        Me.RectangleShape2.Location = New System.Drawing.Point(20, 46)
+        Me.RectangleShape2.Name = "RectangleShape2"
+        Me.RectangleShape2.Size = New System.Drawing.Size(273, 235)
+        '
         'RectangleShape1
         '
         Me.RectangleShape1.Location = New System.Drawing.Point(377, 46)
@@ -340,15 +466,6 @@ Partial Class SelectedTableForm
         '
         Me.StaffTableAdapter.ClearBeforeFill = True
         '
-        'Staff_idLabel
-        '
-        Staff_idLabel.AutoSize = True
-        Staff_idLabel.Location = New System.Drawing.Point(58, 99)
-        Staff_idLabel.Name = "Staff_idLabel"
-        Staff_idLabel.Size = New System.Drawing.Size(41, 13)
-        Staff_idLabel.TabIndex = 0
-        Staff_idLabel.Text = "staff id:"
-        '
         'Staff_idLabel1
         '
         Me.Staff_idLabel1.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.StaffBindingSource, "staff_id", True))
@@ -357,15 +474,6 @@ Partial Class SelectedTableForm
         Me.Staff_idLabel1.Size = New System.Drawing.Size(100, 23)
         Me.Staff_idLabel1.TabIndex = 1
         Me.Staff_idLabel1.Text = "No Staff Assigned"
-        '
-        'Staff_fnameLabel
-        '
-        Staff_fnameLabel.AutoSize = True
-        Staff_fnameLabel.Location = New System.Drawing.Point(58, 122)
-        Staff_fnameLabel.Name = "Staff_fnameLabel"
-        Staff_fnameLabel.Size = New System.Drawing.Size(62, 13)
-        Staff_fnameLabel.TabIndex = 2
-        Staff_fnameLabel.Text = "staff fname:"
         '
         'Staff_fnameLabel1
         '
@@ -376,15 +484,6 @@ Partial Class SelectedTableForm
         Me.Staff_fnameLabel1.TabIndex = 3
         Me.Staff_fnameLabel1.Text = "No Staff Assigned"
         '
-        'Staff_lnameLabel
-        '
-        Staff_lnameLabel.AutoSize = True
-        Staff_lnameLabel.Location = New System.Drawing.Point(58, 145)
-        Staff_lnameLabel.Name = "Staff_lnameLabel"
-        Staff_lnameLabel.Size = New System.Drawing.Size(61, 13)
-        Staff_lnameLabel.TabIndex = 4
-        Staff_lnameLabel.Text = "staff lname:"
-        '
         'Staff_lnameLabel1
         '
         Me.Staff_lnameLabel1.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.StaffBindingSource, "staff_lname", True))
@@ -394,15 +493,6 @@ Partial Class SelectedTableForm
         Me.Staff_lnameLabel1.TabIndex = 5
         Me.Staff_lnameLabel1.Text = "No Staff Assigned"
         '
-        'Staff_max_tableLabel
-        '
-        Staff_max_tableLabel.AutoSize = True
-        Staff_max_tableLabel.Location = New System.Drawing.Point(58, 168)
-        Staff_max_tableLabel.Name = "Staff_max_tableLabel"
-        Staff_max_tableLabel.Size = New System.Drawing.Size(78, 13)
-        Staff_max_tableLabel.TabIndex = 6
-        Staff_max_tableLabel.Text = "staff max table:"
-        '
         'Staff_max_tableLabel1
         '
         Me.Staff_max_tableLabel1.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.StaffBindingSource, "staff_max_table", True))
@@ -411,18 +501,6 @@ Partial Class SelectedTableForm
         Me.Staff_max_tableLabel1.Size = New System.Drawing.Size(100, 23)
         Me.Staff_max_tableLabel1.TabIndex = 7
         Me.Staff_max_tableLabel1.Text = "No Staff Assigned"
-        '
-        'RectangleShape2
-        '
-        Me.RectangleShape2.Location = New System.Drawing.Point(20, 46)
-        Me.RectangleShape2.Name = "RectangleShape2"
-        Me.RectangleShape2.Size = New System.Drawing.Size(273, 235)
-        '
-        'RectangleShape3
-        '
-        Me.RectangleShape3.Location = New System.Drawing.Point(787, 49)
-        Me.RectangleShape3.Name = "RectangleShape3"
-        Me.RectangleShape3.Size = New System.Drawing.Size(271, 233)
         '
         'Label3
         '
@@ -453,15 +531,6 @@ Partial Class SelectedTableForm
         '
         Me.PartyTableAdapter.ClearBeforeFill = True
         '
-        'Party_idLabel
-        '
-        Party_idLabel.AutoSize = True
-        Party_idLabel.Location = New System.Drawing.Point(803, 89)
-        Party_idLabel.Name = "Party_idLabel"
-        Party_idLabel.Size = New System.Drawing.Size(44, 13)
-        Party_idLabel.TabIndex = 0
-        Party_idLabel.Text = "party id:"
-        '
         'Party_idLabel1
         '
         Me.Party_idLabel1.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PartyBindingSource, "party_id", True))
@@ -470,15 +539,6 @@ Partial Class SelectedTableForm
         Me.Party_idLabel1.Size = New System.Drawing.Size(100, 23)
         Me.Party_idLabel1.TabIndex = 1
         Me.Party_idLabel1.Text = "No Party Assigned"
-        '
-        'Party_nameLabel
-        '
-        Party_nameLabel.AutoSize = True
-        Party_nameLabel.Location = New System.Drawing.Point(803, 112)
-        Party_nameLabel.Name = "Party_nameLabel"
-        Party_nameLabel.Size = New System.Drawing.Size(62, 13)
-        Party_nameLabel.TabIndex = 2
-        Party_nameLabel.Text = "party name:"
         '
         'Party_nameLabel1
         '
@@ -489,15 +549,6 @@ Partial Class SelectedTableForm
         Me.Party_nameLabel1.TabIndex = 3
         Me.Party_nameLabel1.Text = "No Party Assigned"
         '
-        'Party_phoneLabel
-        '
-        Party_phoneLabel.AutoSize = True
-        Party_phoneLabel.Location = New System.Drawing.Point(803, 135)
-        Party_phoneLabel.Name = "Party_phoneLabel"
-        Party_phoneLabel.Size = New System.Drawing.Size(66, 13)
-        Party_phoneLabel.TabIndex = 4
-        Party_phoneLabel.Text = "party phone:"
-        '
         'Party_phoneLabel1
         '
         Me.Party_phoneLabel1.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PartyBindingSource, "party_phone", True))
@@ -506,15 +557,6 @@ Partial Class SelectedTableForm
         Me.Party_phoneLabel1.Size = New System.Drawing.Size(100, 23)
         Me.Party_phoneLabel1.TabIndex = 5
         Me.Party_phoneLabel1.Text = "No Party Assigned"
-        '
-        'Party_smokingLabel
-        '
-        Party_smokingLabel.AutoSize = True
-        Party_smokingLabel.Location = New System.Drawing.Point(803, 158)
-        Party_smokingLabel.Name = "Party_smokingLabel"
-        Party_smokingLabel.Size = New System.Drawing.Size(75, 13)
-        Party_smokingLabel.TabIndex = 6
-        Party_smokingLabel.Text = "party smoking:"
         '
         'Party_smokingLabel1
         '
@@ -525,15 +567,6 @@ Partial Class SelectedTableForm
         Me.Party_smokingLabel1.TabIndex = 7
         Me.Party_smokingLabel1.Text = "No Party Assigned"
         '
-        'Party_sizeLabel
-        '
-        Party_sizeLabel.AutoSize = True
-        Party_sizeLabel.Location = New System.Drawing.Point(803, 181)
-        Party_sizeLabel.Name = "Party_sizeLabel"
-        Party_sizeLabel.Size = New System.Drawing.Size(54, 13)
-        Party_sizeLabel.TabIndex = 8
-        Party_sizeLabel.Text = "party size:"
-        '
         'Party_sizeLabel1
         '
         Me.Party_sizeLabel1.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PartyBindingSource, "party_size", True))
@@ -542,15 +575,6 @@ Partial Class SelectedTableForm
         Me.Party_sizeLabel1.Size = New System.Drawing.Size(100, 23)
         Me.Party_sizeLabel1.TabIndex = 9
         Me.Party_sizeLabel1.Text = "No Party Assigned"
-        '
-        'Party_statusLabel
-        '
-        Party_statusLabel.AutoSize = True
-        Party_statusLabel.Location = New System.Drawing.Point(803, 204)
-        Party_statusLabel.Name = "Party_statusLabel"
-        Party_statusLabel.Size = New System.Drawing.Size(64, 13)
-        Party_statusLabel.TabIndex = 10
-        Party_statusLabel.Text = "party status:"
         '
         'Party_statusLabel1
         '
@@ -561,15 +585,6 @@ Partial Class SelectedTableForm
         Me.Party_statusLabel1.TabIndex = 11
         Me.Party_statusLabel1.Text = "No Party Assigned"
         '
-        'Party_arrival_timeLabel
-        '
-        Party_arrival_timeLabel.AutoSize = True
-        Party_arrival_timeLabel.Location = New System.Drawing.Point(803, 227)
-        Party_arrival_timeLabel.Name = "Party_arrival_timeLabel"
-        Party_arrival_timeLabel.Size = New System.Drawing.Size(86, 13)
-        Party_arrival_timeLabel.TabIndex = 12
-        Party_arrival_timeLabel.Text = "party arrival time:"
-        '
         'Party_arrival_timeLabel1
         '
         Me.Party_arrival_timeLabel1.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PartyBindingSource, "party_arrival_time", True))
@@ -578,15 +593,6 @@ Partial Class SelectedTableForm
         Me.Party_arrival_timeLabel1.Size = New System.Drawing.Size(100, 23)
         Me.Party_arrival_timeLabel1.TabIndex = 13
         Me.Party_arrival_timeLabel1.Text = "No Party Assigned"
-        '
-        'Party_departure_timeLabel
-        '
-        Party_departure_timeLabel.AutoSize = True
-        Party_departure_timeLabel.Location = New System.Drawing.Point(803, 250)
-        Party_departure_timeLabel.Name = "Party_departure_timeLabel"
-        Party_departure_timeLabel.Size = New System.Drawing.Size(103, 13)
-        Party_departure_timeLabel.TabIndex = 14
-        Party_departure_timeLabel.Text = "party departure time:"
         '
         'Party_departure_timeLabel1
         '
@@ -597,11 +603,56 @@ Partial Class SelectedTableForm
         Me.Party_departure_timeLabel1.TabIndex = 15
         Me.Party_departure_timeLabel1.Text = "No Party Assigned"
         '
+        'AssignmentsTableAdapter
+        '
+        Me.AssignmentsTableAdapter.ClearBeforeFill = True
+        '
+        'AssignTableButton
+        '
+        Me.AssignTableButton.BackColor = System.Drawing.SystemColors.Control
+        Me.AssignTableButton.Location = New System.Drawing.Point(212, 340)
+        Me.AssignTableButton.Name = "AssignTableButton"
+        Me.AssignTableButton.Size = New System.Drawing.Size(115, 23)
+        Me.AssignTableButton.TabIndex = 22
+        Me.AssignTableButton.Text = "Assign Table"
+        Me.AssignTableButton.UseVisualStyleBackColor = False
+        '
+        'CompleteAssignmentButton
+        '
+        Me.CompleteAssignmentButton.Location = New System.Drawing.Point(660, 340)
+        Me.CompleteAssignmentButton.Name = "CompleteAssignmentButton"
+        Me.CompleteAssignmentButton.Size = New System.Drawing.Size(169, 23)
+        Me.CompleteAssignmentButton.TabIndex = 24
+        Me.CompleteAssignmentButton.Text = "Complete Assignment"
+        Me.CompleteAssignmentButton.UseVisualStyleBackColor = True
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(582, 310)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(348, 13)
+        Me.Label5.TabIndex = 25
+        Me.Label5.Text = "When the party has paid and left click the 'Complete Assignment' button."
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(157, 310)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(276, 13)
+        Me.Label6.TabIndex = 26
+        Me.Label6.Text = "To assign party and staff to this table click 'Assign Table'."
+        '
         'SelectedTableForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1081, 462)
+        Me.Controls.Add(Me.Label6)
+        Me.Controls.Add(Me.Label5)
+        Me.Controls.Add(Me.CompleteAssignmentButton)
+        Me.Controls.Add(Me.AssignTableButton)
         Me.Controls.Add(Party_idLabel)
         Me.Controls.Add(Me.Party_idLabel1)
         Me.Controls.Add(Party_nameLabel)
@@ -701,4 +752,9 @@ Partial Class SelectedTableForm
     Friend WithEvents Party_statusLabel1 As System.Windows.Forms.Label
     Friend WithEvents Party_arrival_timeLabel1 As System.Windows.Forms.Label
     Friend WithEvents Party_departure_timeLabel1 As System.Windows.Forms.Label
+    Friend WithEvents AssignmentsTableAdapter As eHostessV4.eHostessDataSetTableAdapters.AssignmentsTableAdapter
+    Friend WithEvents AssignTableButton As System.Windows.Forms.Button
+    Friend WithEvents CompleteAssignmentButton As System.Windows.Forms.Button
+    Friend WithEvents Label5 As System.Windows.Forms.Label
+    Friend WithEvents Label6 As System.Windows.Forms.Label
 End Class

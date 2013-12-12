@@ -113,10 +113,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="PartyForm.Designer.vb">
-      <DependentUpon>PartyForm.vb</DependentUpon>
+    <Compile Include="PartiesForm.Designer.vb">
+      <DependentUpon>PartiesForm.vb</DependentUpon>
     </Compile>
-    <Compile Include="PartyForm.vb">
+    <Compile Include="PartiesForm.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="SelectedTableForm.Designer.vb">
@@ -148,8 +148,8 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="PartyForm.resx">
-      <DependentUpon>PartyForm.vb</DependentUpon>
+    <EmbeddedResource Include="PartiesForm.resx">
+      <DependentUpon>PartiesForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SelectedTableForm.resx">
       <DependentUpon>SelectedTableForm.vb</DependentUpon>

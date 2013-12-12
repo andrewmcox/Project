@@ -1,4 +1,4 @@
-﻿Public Class PartyForm
+﻿Public Class PartiesForm
 
     Private Sub PartyBindingNavigatorSaveItem_Click(sender As Object, e As EventArgs)
         Me.Validate()

@@ -67,6 +67,7 @@ Partial Class MainForm
         Me.TableAdapterManager = New eHostessV4.eHostessDataSetTableAdapters.TableAdapterManager()
         Me.AssignmentsTableAdapter = New eHostessV4.eHostessDataSetTableAdapters.AssignmentsTableAdapter()
         Me.SeatingTableAdapter = New eHostessV4.eHostessDataSetTableAdapters.SeatingTableAdapter()
+        Me.AddPartyButton = New System.Windows.Forms.Button()
         Me.MenuStrip1.SuspendLayout()
         CType(Me.ActiveStaffDataGrid, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.StaffBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -421,11 +422,21 @@ Partial Class MainForm
         '
         Me.SeatingTableAdapter.ClearBeforeFill = True
         '
+        'AddPartyButton
+        '
+        Me.AddPartyButton.Location = New System.Drawing.Point(1012, 513)
+        Me.AddPartyButton.Name = "AddPartyButton"
+        Me.AddPartyButton.Size = New System.Drawing.Size(75, 23)
+        Me.AddPartyButton.TabIndex = 21
+        Me.AddPartyButton.Text = "Add Party"
+        Me.AddPartyButton.UseVisualStyleBackColor = True
+        '
         'MainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1274, 622)
+        Me.Controls.Add(Me.AddPartyButton)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.ActiveStaffLabel)
@@ -505,5 +516,6 @@ Partial Class MainForm
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents AssignmentsTableAdapter As eHostessV4.eHostessDataSetTableAdapters.AssignmentsTableAdapter
     Friend WithEvents SeatingTableAdapter As eHostessV4.eHostessDataSetTableAdapters.SeatingTableAdapter
+    Friend WithEvents AddPartyButton As System.Windows.Forms.Button
 
 End Class

@@ -1,4 +1,4 @@
-﻿Public Class TableForm
+﻿Public Class TablesForm
 
     Private Sub SeatingBindingNavigatorSaveItem_Click(sender As Object, e As EventArgs) Handles SeatingBindingNavigatorSaveItem.Click
         Me.Validate()

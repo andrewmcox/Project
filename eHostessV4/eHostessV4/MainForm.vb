@@ -36,12 +36,12 @@
 
     Private Sub PartyToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PartyToolStripMenuItem.Click
         Me.Hide()
-        PartyForm.Show()
+        PartiesForm.Show()
     End Sub
 
     Private Sub TableToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TableToolStripMenuItem.Click
         Me.Hide()
-        TableForm.Show()
+        TablesForm.Show()
     End Sub
 
 
@@ -79,5 +79,9 @@
                 btn.Enabled = True
             End If
         Next
+    End Sub
+
+    Private Sub AddPartyButton_Click(sender As Object, e As EventArgs) Handles AddPartyButton.Click
+        'Launch add party form
     End Sub
 End Class
