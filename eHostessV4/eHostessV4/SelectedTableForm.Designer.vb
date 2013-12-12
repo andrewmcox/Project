@@ -87,6 +87,10 @@ Partial Class SelectedTableForm
         Me.CompleteAssignmentButton = New System.Windows.Forms.Button()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Party_DetailTableAdapter = New eHostessV4.eHostessDataSetTableAdapters.Party_DetailTableAdapter()
+        Me.Party_DetailBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.PreferenceListBox = New System.Windows.Forms.ListBox()
         Table_idLabel = New System.Windows.Forms.Label()
         Table_maxLabel = New System.Windows.Forms.Label()
         Table_smokingLabel = New System.Windows.Forms.Label()
@@ -112,6 +116,7 @@ Partial Class SelectedTableForm
         CType(Me.Seating_DetailBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.StaffBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PartyBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Party_DetailBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Table_idLabel
@@ -290,7 +295,7 @@ Partial Class SelectedTableForm
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DoneToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(1081, 24)
+        Me.MenuStrip1.Size = New System.Drawing.Size(1276, 24)
         Me.MenuStrip1.TabIndex = 0
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -395,7 +400,7 @@ Partial Class SelectedTableForm
         Me.ShapeContainer1.Margin = New System.Windows.Forms.Padding(0)
         Me.ShapeContainer1.Name = "ShapeContainer1"
         Me.ShapeContainer1.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape3, Me.RectangleShape2, Me.RectangleShape1})
-        Me.ShapeContainer1.Size = New System.Drawing.Size(1081, 462)
+        Me.ShapeContainer1.Size = New System.Drawing.Size(1276, 462)
         Me.ShapeContainer1.TabIndex = 17
         Me.ShapeContainer1.TabStop = False
         '
@@ -403,7 +408,7 @@ Partial Class SelectedTableForm
         '
         Me.RectangleShape3.Location = New System.Drawing.Point(787, 49)
         Me.RectangleShape3.Name = "RectangleShape3"
-        Me.RectangleShape3.Size = New System.Drawing.Size(271, 233)
+        Me.RectangleShape3.Size = New System.Drawing.Size(361, 233)
         '
         'RectangleShape2
         '
@@ -644,11 +649,43 @@ Partial Class SelectedTableForm
         Me.Label6.TabIndex = 26
         Me.Label6.Text = "To assign party and staff to this table click 'Assign Table'."
         '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.Location = New System.Drawing.Point(1049, 89)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(64, 13)
+        Me.Label7.TabIndex = 27
+        Me.Label7.Text = "Preferences"
+        '
+        'Party_DetailTableAdapter
+        '
+        Me.Party_DetailTableAdapter.ClearBeforeFill = True
+        '
+        'Party_DetailBindingSource
+        '
+        Me.Party_DetailBindingSource.DataMember = "Party_Detail"
+        Me.Party_DetailBindingSource.DataSource = Me.EHostessDataSet
+        '
+        'PreferenceListBox
+        '
+        Me.PreferenceListBox.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.Party_DetailBindingSource, "preference", True))
+        Me.PreferenceListBox.DataSource = Me.Party_DetailBindingSource
+        Me.PreferenceListBox.DisplayMember = "preference"
+        Me.PreferenceListBox.FormattingEnabled = True
+        Me.PreferenceListBox.Location = New System.Drawing.Point(1029, 107)
+        Me.PreferenceListBox.Name = "PreferenceListBox"
+        Me.PreferenceListBox.Size = New System.Drawing.Size(108, 147)
+        Me.PreferenceListBox.TabIndex = 1
+        '
         'SelectedTableForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1081, 462)
+        Me.ClientSize = New System.Drawing.Size(1276, 462)
+        Me.Controls.Add(Me.PreferenceListBox)
+        Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.CompleteAssignmentButton)
@@ -708,6 +745,7 @@ Partial Class SelectedTableForm
         CType(Me.Seating_DetailBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.StaffBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PartyBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Party_DetailBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -757,4 +795,8 @@ Partial Class SelectedTableForm
     Friend WithEvents CompleteAssignmentButton As System.Windows.Forms.Button
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents Label6 As System.Windows.Forms.Label
+    Friend WithEvents Label7 As System.Windows.Forms.Label
+    Friend WithEvents Party_DetailTableAdapter As eHostessV4.eHostessDataSetTableAdapters.Party_DetailTableAdapter
+    Friend WithEvents Party_DetailBindingSource As System.Windows.Forms.BindingSource
+    Friend WithEvents PreferenceListBox As System.Windows.Forms.ListBox
 End Class

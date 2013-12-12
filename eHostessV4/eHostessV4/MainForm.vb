@@ -83,5 +83,7 @@
 
     Private Sub AddPartyButton_Click(sender As Object, e As EventArgs) Handles AddPartyButton.Click
         'Launch add party form
+        AddPartyForm.Show()
+        Me.Hide()
     End Sub
 End Class

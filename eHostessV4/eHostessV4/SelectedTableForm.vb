@@ -36,6 +36,9 @@
         Me.PartyTableAdapter.ClearBeforeFill = True
         Me.PartyTableAdapter.FillByPartyByTableID(Me.EHostessDataSet.Party, Me.tableID)
 
+        Me.Party_DetailTableAdapter.ClearBeforeFill = True
+        Me.Party_DetailTableAdapter.FillByTableID(Me.EHostessDataSet.Party_Detail, Me.tableID)
+
         If CBool(Me.AssignmentsTableAdapter.IsTableAvailableProcedure(Me.tableID) = 0) Then
             Me.CompleteAssignmentButton.Enabled = False
             Me.AssignTableButton.Enabled = True

@@ -86,6 +86,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddPartyForm.Designer.vb">
+      <DependentUpon>AddPartyForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AddPartyForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="eHostessDataSet.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -131,14 +137,17 @@
     <Compile Include="StaffForm.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TableForm.Designer.vb">
-      <DependentUpon>TableForm.vb</DependentUpon>
+    <Compile Include="TablesForm.Designer.vb">
+      <DependentUpon>TablesForm.vb</DependentUpon>
     </Compile>
-    <Compile Include="TableForm.vb">
+    <Compile Include="TablesForm.vb">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="AddPartyForm.resx">
+      <DependentUpon>AddPartyForm.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.vb</DependentUpon>
     </EmbeddedResource>
@@ -157,8 +166,8 @@
     <EmbeddedResource Include="StaffForm.resx">
       <DependentUpon>StaffForm.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TableForm.resx">
-      <DependentUpon>TableForm.vb</DependentUpon>
+    <EmbeddedResource Include="TablesForm.resx">
+      <DependentUpon>TablesForm.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
