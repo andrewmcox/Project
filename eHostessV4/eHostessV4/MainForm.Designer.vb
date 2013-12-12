@@ -33,7 +33,17 @@ Partial Class MainForm
         Me.PartyToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TableToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ActiveStaffDataGrid = New System.Windows.Forms.DataGridView()
+        Me.StafffnameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.StafflnameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.StaffmaxtableDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.StaffBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.EHostessDataSet = New eHostessV4.eHostessDataSet()
         Me.PartyDataGridView = New System.Windows.Forms.DataGridView()
+        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PartyBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Table12 = New System.Windows.Forms.Button()
         Me.Table2 = New System.Windows.Forms.Button()
         Me.Table3 = New System.Windows.Forms.Button()
@@ -52,16 +62,6 @@ Partial Class MainForm
         Me.ActiveStaffLabel = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PartyBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.EHostessDataSet = New eHostessV4.eHostessDataSet()
-        Me.StafffnameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.StafflnameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.StaffmaxtableDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.StaffBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.StaffTableAdapter = New eHostessV4.eHostessDataSetTableAdapters.StaffTableAdapter()
         Me.PartyTableAdapter = New eHostessV4.eHostessDataSetTableAdapters.PartyTableAdapter()
         Me.TableAdapterManager = New eHostessV4.eHostessDataSetTableAdapters.TableAdapterManager()
@@ -69,10 +69,10 @@ Partial Class MainForm
         Me.SeatingTableAdapter = New eHostessV4.eHostessDataSetTableAdapters.SeatingTableAdapter()
         Me.MenuStrip1.SuspendLayout()
         CType(Me.ActiveStaffDataGrid, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.StaffBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EHostessDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PartyDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PartyBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EHostessDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.StaffBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Table1
@@ -149,6 +149,34 @@ Partial Class MainForm
         Me.ActiveStaffDataGrid.Size = New System.Drawing.Size(350, 439)
         Me.ActiveStaffDataGrid.TabIndex = 1
         '
+        'StafffnameDataGridViewTextBoxColumn
+        '
+        Me.StafffnameDataGridViewTextBoxColumn.DataPropertyName = "staff_fname"
+        Me.StafffnameDataGridViewTextBoxColumn.HeaderText = "staff_fname"
+        Me.StafffnameDataGridViewTextBoxColumn.Name = "StafffnameDataGridViewTextBoxColumn"
+        '
+        'StafflnameDataGridViewTextBoxColumn
+        '
+        Me.StafflnameDataGridViewTextBoxColumn.DataPropertyName = "staff_lname"
+        Me.StafflnameDataGridViewTextBoxColumn.HeaderText = "staff_lname"
+        Me.StafflnameDataGridViewTextBoxColumn.Name = "StafflnameDataGridViewTextBoxColumn"
+        '
+        'StaffmaxtableDataGridViewTextBoxColumn
+        '
+        Me.StaffmaxtableDataGridViewTextBoxColumn.DataPropertyName = "staff_max_table"
+        Me.StaffmaxtableDataGridViewTextBoxColumn.HeaderText = "staff_max_table"
+        Me.StaffmaxtableDataGridViewTextBoxColumn.Name = "StaffmaxtableDataGridViewTextBoxColumn"
+        '
+        'StaffBindingSource
+        '
+        Me.StaffBindingSource.DataMember = "Staff"
+        Me.StaffBindingSource.DataSource = Me.EHostessDataSet
+        '
+        'EHostessDataSet
+        '
+        Me.EHostessDataSet.DataSetName = "eHostessDataSet"
+        Me.EHostessDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
         'PartyDataGridView
         '
         Me.PartyDataGridView.AutoGenerateColumns = False
@@ -159,6 +187,35 @@ Partial Class MainForm
         Me.PartyDataGridView.Name = "PartyDataGridView"
         Me.PartyDataGridView.Size = New System.Drawing.Size(444, 455)
         Me.PartyDataGridView.TabIndex = 3
+        '
+        'DataGridViewTextBoxColumn2
+        '
+        Me.DataGridViewTextBoxColumn2.DataPropertyName = "party_name"
+        Me.DataGridViewTextBoxColumn2.HeaderText = "party_name"
+        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
+        '
+        'DataGridViewTextBoxColumn4
+        '
+        Me.DataGridViewTextBoxColumn4.DataPropertyName = "party_smoking"
+        Me.DataGridViewTextBoxColumn4.HeaderText = "party_smoking"
+        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
+        '
+        'DataGridViewTextBoxColumn3
+        '
+        Me.DataGridViewTextBoxColumn3.DataPropertyName = "party_phone"
+        Me.DataGridViewTextBoxColumn3.HeaderText = "party_phone"
+        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
+        '
+        'DataGridViewTextBoxColumn5
+        '
+        Me.DataGridViewTextBoxColumn5.DataPropertyName = "party_size"
+        Me.DataGridViewTextBoxColumn5.HeaderText = "party_size"
+        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
+        '
+        'PartyBindingSource
+        '
+        Me.PartyBindingSource.DataMember = "Party"
+        Me.PartyBindingSource.DataSource = Me.EHostessDataSet
         '
         'Table12
         '
@@ -309,7 +366,7 @@ Partial Class MainForm
         'ActiveStaffLabel
         '
         Me.ActiveStaffLabel.AutoSize = True
-        Me.ActiveStaffLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ActiveStaffLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ActiveStaffLabel.Location = New System.Drawing.Point(132, 27)
         Me.ActiveStaffLabel.Name = "ActiveStaffLabel"
         Me.ActiveStaffLabel.Size = New System.Drawing.Size(74, 13)
@@ -319,7 +376,7 @@ Partial Class MainForm
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.Location = New System.Drawing.Point(1009, 27)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(82, 13)
@@ -329,69 +386,12 @@ Partial Class MainForm
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.Location = New System.Drawing.Point(565, 43)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(45, 13)
         Me.Label2.TabIndex = 20
         Me.Label2.Text = "Tables"
-        '
-        'DataGridViewTextBoxColumn2
-        '
-        Me.DataGridViewTextBoxColumn2.DataPropertyName = "party_name"
-        Me.DataGridViewTextBoxColumn2.HeaderText = "party_name"
-        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
-        '
-        'DataGridViewTextBoxColumn4
-        '
-        Me.DataGridViewTextBoxColumn4.DataPropertyName = "party_smoking"
-        Me.DataGridViewTextBoxColumn4.HeaderText = "party_smoking"
-        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
-        '
-        'DataGridViewTextBoxColumn3
-        '
-        Me.DataGridViewTextBoxColumn3.DataPropertyName = "party_phone"
-        Me.DataGridViewTextBoxColumn3.HeaderText = "party_phone"
-        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
-        '
-        'DataGridViewTextBoxColumn5
-        '
-        Me.DataGridViewTextBoxColumn5.DataPropertyName = "party_size"
-        Me.DataGridViewTextBoxColumn5.HeaderText = "party_size"
-        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
-        '
-        'PartyBindingSource
-        '
-        Me.PartyBindingSource.DataMember = "Party"
-        Me.PartyBindingSource.DataSource = Me.EHostessDataSet
-        '
-        'EHostessDataSet
-        '
-        Me.EHostessDataSet.DataSetName = "eHostessDataSet"
-        Me.EHostessDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'StafffnameDataGridViewTextBoxColumn
-        '
-        Me.StafffnameDataGridViewTextBoxColumn.DataPropertyName = "staff_fname"
-        Me.StafffnameDataGridViewTextBoxColumn.HeaderText = "staff_fname"
-        Me.StafffnameDataGridViewTextBoxColumn.Name = "StafffnameDataGridViewTextBoxColumn"
-        '
-        'StafflnameDataGridViewTextBoxColumn
-        '
-        Me.StafflnameDataGridViewTextBoxColumn.DataPropertyName = "staff_lname"
-        Me.StafflnameDataGridViewTextBoxColumn.HeaderText = "staff_lname"
-        Me.StafflnameDataGridViewTextBoxColumn.Name = "StafflnameDataGridViewTextBoxColumn"
-        '
-        'StaffmaxtableDataGridViewTextBoxColumn
-        '
-        Me.StaffmaxtableDataGridViewTextBoxColumn.DataPropertyName = "staff_max_table"
-        Me.StaffmaxtableDataGridViewTextBoxColumn.HeaderText = "staff_max_table"
-        Me.StaffmaxtableDataGridViewTextBoxColumn.Name = "StaffmaxtableDataGridViewTextBoxColumn"
-        '
-        'StaffBindingSource
-        '
-        Me.StaffBindingSource.DataMember = "Staff"
-        Me.StaffBindingSource.DataSource = Me.EHostessDataSet
         '
         'StaffTableAdapter
         '
@@ -453,10 +453,10 @@ Partial Class MainForm
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
         CType(Me.ActiveStaffDataGrid, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.StaffBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EHostessDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PartyDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PartyBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EHostessDataSet, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.StaffBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
