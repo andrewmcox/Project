@@ -291,7 +291,7 @@ SELECT party_id, preference FROM Party_Detail WHERE (party_id = @party_id) AND (
               <Mapping SourceColumn="preference" DataSetColumn="preference" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="eHostessConnectionString (MySettings)" DbObjectName="dbo.Party_Detail" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillByTableID" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillByTableID" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="FillByTableID">
+              <DbSource ConnectionRef="eHostessConnectionString (MySettings)" DbObjectName="dbo.Party_Detail" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillByTableID" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillByTableID" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillByTableID">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        party_id, preference
@@ -306,7 +306,7 @@ WHERE        (party_id =
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="eHostessConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="InsertPreference" Modifier="Public" Name="InsertPreference" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="InsertPreference">
+              <DbSource ConnectionRef="eHostessConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="InsertPreference" Modifier="Public" Name="InsertPreference" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="InsertPreference">
                 <InsertCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>INSERT INTO [dbo].[Party_Detail] ([party_id], [preference]) VALUES (@party_id, @preference);
@@ -548,6 +548,24 @@ WHERE        (staff_id =
               </DbSource>
             </Sources>
           </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="JoinActiveStaffSizeTableAdapter" GeneratorDataComponentClassName="JoinActiveStaffSizeTableAdapter" Name="JoinActiveStaffSize" UserDataComponentName="JoinActiveStaffSizeTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="eHostessConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        Staff.staff_fname + ' ' + Staff.staff_lname + ' (' + CAST(Staff.staff_max_table AS Varchar) + ')' AS nameSize
+FROM            Staff INNER JOIN
+                         Active_Staff ON Staff.staff_id = Active_Staff.staff_id</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="nameSize" DataSetColumn="nameSize" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
         </Tables>
         <Sources />
       </DataSource>
@@ -556,7 +574,7 @@ WHERE        (staff_id =
   <xs:element name="eHostessDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="eHostessDataSet" msprop:Generator_UserDSName="eHostessDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Active_Staff" msprop:Generator_TableClassName="Active_StaffDataTable" msprop:Generator_TableVarName="tableActive_Staff" msprop:Generator_RowChangedName="Active_StaffRowChanged" msprop:Generator_TablePropName="Active_Staff" msprop:Generator_RowDeletingName="Active_StaffRowDeleting" msprop:Generator_RowChangingName="Active_StaffRowChanging" msprop:Generator_RowEvHandlerName="Active_StaffRowChangeEventHandler" msprop:Generator_RowDeletedName="Active_StaffRowDeleted" msprop:Generator_RowClassName="Active_StaffRow" msprop:Generator_UserTableName="Active_Staff" msprop:Generator_RowEvArgName="Active_StaffRowChangeEvent">
+        <xs:element name="Active_Staff" msprop:Generator_TableClassName="Active_StaffDataTable" msprop:Generator_TableVarName="tableActive_Staff" msprop:Generator_TablePropName="Active_Staff" msprop:Generator_RowDeletingName="Active_StaffRowDeleting" msprop:Generator_RowChangingName="Active_StaffRowChanging" msprop:Generator_RowEvHandlerName="Active_StaffRowChangeEventHandler" msprop:Generator_RowDeletedName="Active_StaffRowDeleted" msprop:Generator_UserTableName="Active_Staff" msprop:Generator_RowChangedName="Active_StaffRowChanged" msprop:Generator_RowEvArgName="Active_StaffRowChangeEvent" msprop:Generator_RowClassName="Active_StaffRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="staff_id" msprop:Generator_ColumnVarNameInTable="columnstaff_id" msprop:Generator_ColumnPropNameInRow="staff_id" msprop:Generator_ColumnPropNameInTable="staff_idColumn" msprop:Generator_UserColumnName="staff_id" type="xs:int" />
@@ -565,7 +583,7 @@ WHERE        (staff_id =
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Assignments" msprop:Generator_TableClassName="AssignmentsDataTable" msprop:Generator_TableVarName="tableAssignments" msprop:Generator_RowChangedName="AssignmentsRowChanged" msprop:Generator_TablePropName="Assignments" msprop:Generator_RowDeletingName="AssignmentsRowDeleting" msprop:Generator_RowChangingName="AssignmentsRowChanging" msprop:Generator_RowEvHandlerName="AssignmentsRowChangeEventHandler" msprop:Generator_RowDeletedName="AssignmentsRowDeleted" msprop:Generator_RowClassName="AssignmentsRow" msprop:Generator_UserTableName="Assignments" msprop:Generator_RowEvArgName="AssignmentsRowChangeEvent">
+        <xs:element name="Assignments" msprop:Generator_TableClassName="AssignmentsDataTable" msprop:Generator_TableVarName="tableAssignments" msprop:Generator_TablePropName="Assignments" msprop:Generator_RowDeletingName="AssignmentsRowDeleting" msprop:Generator_RowChangingName="AssignmentsRowChanging" msprop:Generator_RowEvHandlerName="AssignmentsRowChangeEventHandler" msprop:Generator_RowDeletedName="AssignmentsRowDeleted" msprop:Generator_UserTableName="Assignments" msprop:Generator_RowChangedName="AssignmentsRowChanged" msprop:Generator_RowEvArgName="AssignmentsRowChangeEvent" msprop:Generator_RowClassName="AssignmentsRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="table_id" msprop:Generator_ColumnVarNameInTable="columntable_id" msprop:Generator_ColumnPropNameInRow="table_id" msprop:Generator_ColumnPropNameInTable="table_idColumn" msprop:Generator_UserColumnName="table_id" type="xs:int" />
@@ -575,7 +593,7 @@ WHERE        (staff_id =
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Party" msprop:Generator_TableClassName="PartyDataTable" msprop:Generator_TableVarName="tableParty" msprop:Generator_RowChangedName="PartyRowChanged" msprop:Generator_TablePropName="Party" msprop:Generator_RowDeletingName="PartyRowDeleting" msprop:Generator_RowChangingName="PartyRowChanging" msprop:Generator_RowEvHandlerName="PartyRowChangeEventHandler" msprop:Generator_RowDeletedName="PartyRowDeleted" msprop:Generator_RowClassName="PartyRow" msprop:Generator_UserTableName="Party" msprop:Generator_RowEvArgName="PartyRowChangeEvent">
+        <xs:element name="Party" msprop:Generator_TableClassName="PartyDataTable" msprop:Generator_TableVarName="tableParty" msprop:Generator_TablePropName="Party" msprop:Generator_RowDeletingName="PartyRowDeleting" msprop:Generator_RowChangingName="PartyRowChanging" msprop:Generator_RowEvHandlerName="PartyRowChangeEventHandler" msprop:Generator_RowDeletedName="PartyRowDeleted" msprop:Generator_UserTableName="Party" msprop:Generator_RowChangedName="PartyRowChanged" msprop:Generator_RowEvArgName="PartyRowChangeEvent" msprop:Generator_RowClassName="PartyRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="party_id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnparty_id" msprop:Generator_ColumnPropNameInRow="party_id" msprop:Generator_ColumnPropNameInTable="party_idColumn" msprop:Generator_UserColumnName="party_id" type="xs:int" />
@@ -613,7 +631,7 @@ WHERE        (staff_id =
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Party_Detail" msprop:Generator_TableClassName="Party_DetailDataTable" msprop:Generator_TableVarName="tableParty_Detail" msprop:Generator_RowChangedName="Party_DetailRowChanged" msprop:Generator_TablePropName="Party_Detail" msprop:Generator_RowDeletingName="Party_DetailRowDeleting" msprop:Generator_RowChangingName="Party_DetailRowChanging" msprop:Generator_RowEvHandlerName="Party_DetailRowChangeEventHandler" msprop:Generator_RowDeletedName="Party_DetailRowDeleted" msprop:Generator_RowClassName="Party_DetailRow" msprop:Generator_UserTableName="Party_Detail" msprop:Generator_RowEvArgName="Party_DetailRowChangeEvent">
+        <xs:element name="Party_Detail" msprop:Generator_TableClassName="Party_DetailDataTable" msprop:Generator_TableVarName="tableParty_Detail" msprop:Generator_TablePropName="Party_Detail" msprop:Generator_RowDeletingName="Party_DetailRowDeleting" msprop:Generator_RowChangingName="Party_DetailRowChanging" msprop:Generator_RowEvHandlerName="Party_DetailRowChangeEventHandler" msprop:Generator_RowDeletedName="Party_DetailRowDeleted" msprop:Generator_UserTableName="Party_Detail" msprop:Generator_RowChangedName="Party_DetailRowChanged" msprop:Generator_RowEvArgName="Party_DetailRowChangeEvent" msprop:Generator_RowClassName="Party_DetailRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="party_id" msprop:Generator_ColumnVarNameInTable="columnparty_id" msprop:Generator_ColumnPropNameInRow="party_id" msprop:Generator_ColumnPropNameInTable="party_idColumn" msprop:Generator_UserColumnName="party_id" type="xs:int" />
@@ -627,7 +645,7 @@ WHERE        (staff_id =
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Seating" msprop:Generator_TableClassName="SeatingDataTable" msprop:Generator_TableVarName="tableSeating" msprop:Generator_RowChangedName="SeatingRowChanged" msprop:Generator_TablePropName="Seating" msprop:Generator_RowDeletingName="SeatingRowDeleting" msprop:Generator_RowChangingName="SeatingRowChanging" msprop:Generator_RowEvHandlerName="SeatingRowChangeEventHandler" msprop:Generator_RowDeletedName="SeatingRowDeleted" msprop:Generator_RowClassName="SeatingRow" msprop:Generator_UserTableName="Seating" msprop:Generator_RowEvArgName="SeatingRowChangeEvent">
+        <xs:element name="Seating" msprop:Generator_TableClassName="SeatingDataTable" msprop:Generator_TableVarName="tableSeating" msprop:Generator_TablePropName="Seating" msprop:Generator_RowDeletingName="SeatingRowDeleting" msprop:Generator_RowChangingName="SeatingRowChanging" msprop:Generator_RowEvHandlerName="SeatingRowChangeEventHandler" msprop:Generator_RowDeletedName="SeatingRowDeleted" msprop:Generator_UserTableName="Seating" msprop:Generator_RowChangedName="SeatingRowChanged" msprop:Generator_RowEvArgName="SeatingRowChangeEvent" msprop:Generator_RowClassName="SeatingRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="table_id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columntable_id" msprop:Generator_ColumnPropNameInRow="table_id" msprop:Generator_ColumnPropNameInTable="table_idColumn" msprop:Generator_UserColumnName="table_id" type="xs:int" />
@@ -646,7 +664,7 @@ WHERE        (staff_id =
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Seating_Detail" msprop:Generator_TableClassName="Seating_DetailDataTable" msprop:Generator_TableVarName="tableSeating_Detail" msprop:Generator_RowChangedName="Seating_DetailRowChanged" msprop:Generator_TablePropName="Seating_Detail" msprop:Generator_RowDeletingName="Seating_DetailRowDeleting" msprop:Generator_RowChangingName="Seating_DetailRowChanging" msprop:Generator_RowEvHandlerName="Seating_DetailRowChangeEventHandler" msprop:Generator_RowDeletedName="Seating_DetailRowDeleted" msprop:Generator_RowClassName="Seating_DetailRow" msprop:Generator_UserTableName="Seating_Detail" msprop:Generator_RowEvArgName="Seating_DetailRowChangeEvent">
+        <xs:element name="Seating_Detail" msprop:Generator_TableClassName="Seating_DetailDataTable" msprop:Generator_TableVarName="tableSeating_Detail" msprop:Generator_TablePropName="Seating_Detail" msprop:Generator_RowDeletingName="Seating_DetailRowDeleting" msprop:Generator_RowChangingName="Seating_DetailRowChanging" msprop:Generator_RowEvHandlerName="Seating_DetailRowChangeEventHandler" msprop:Generator_RowDeletedName="Seating_DetailRowDeleted" msprop:Generator_UserTableName="Seating_Detail" msprop:Generator_RowChangedName="Seating_DetailRowChanged" msprop:Generator_RowEvArgName="Seating_DetailRowChangeEvent" msprop:Generator_RowClassName="Seating_DetailRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="table_id" msprop:Generator_ColumnVarNameInTable="columntable_id" msprop:Generator_ColumnPropNameInRow="table_id" msprop:Generator_ColumnPropNameInTable="table_idColumn" msprop:Generator_UserColumnName="table_id" type="xs:int" />
@@ -660,7 +678,7 @@ WHERE        (staff_id =
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Staff" msprop:Generator_TableClassName="StaffDataTable" msprop:Generator_TableVarName="tableStaff" msprop:Generator_RowChangedName="StaffRowChanged" msprop:Generator_TablePropName="Staff" msprop:Generator_RowDeletingName="StaffRowDeleting" msprop:Generator_RowChangingName="StaffRowChanging" msprop:Generator_RowEvHandlerName="StaffRowChangeEventHandler" msprop:Generator_RowDeletedName="StaffRowDeleted" msprop:Generator_RowClassName="StaffRow" msprop:Generator_UserTableName="Staff" msprop:Generator_RowEvArgName="StaffRowChangeEvent">
+        <xs:element name="Staff" msprop:Generator_TableClassName="StaffDataTable" msprop:Generator_TableVarName="tableStaff" msprop:Generator_TablePropName="Staff" msprop:Generator_RowDeletingName="StaffRowDeleting" msprop:Generator_RowChangingName="StaffRowChanging" msprop:Generator_RowEvHandlerName="StaffRowChangeEventHandler" msprop:Generator_RowDeletedName="StaffRowDeleted" msprop:Generator_UserTableName="Staff" msprop:Generator_RowChangedName="StaffRowChanged" msprop:Generator_RowEvArgName="StaffRowChangeEvent" msprop:Generator_RowClassName="StaffRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="staff_id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnstaff_id" msprop:Generator_ColumnPropNameInRow="staff_id" msprop:Generator_ColumnPropNameInTable="staff_idColumn" msprop:Generator_UserColumnName="staff_id" type="xs:int" />
@@ -679,6 +697,19 @@ WHERE        (staff_id =
                 </xs:simpleType>
               </xs:element>
               <xs:element name="staff_max_table" msprop:Generator_ColumnVarNameInTable="columnstaff_max_table" msprop:Generator_ColumnPropNameInRow="staff_max_table" msprop:Generator_ColumnPropNameInTable="staff_max_tableColumn" msprop:Generator_UserColumnName="staff_max_table" type="xs:decimal" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="JoinActiveStaffSize" msprop:Generator_TableClassName="JoinActiveStaffSizeDataTable" msprop:Generator_TableVarName="tableJoinActiveStaffSize" msprop:Generator_TablePropName="JoinActiveStaffSize" msprop:Generator_RowDeletingName="JoinActiveStaffSizeRowDeleting" msprop:Generator_RowChangingName="JoinActiveStaffSizeRowChanging" msprop:Generator_RowEvHandlerName="JoinActiveStaffSizeRowChangeEventHandler" msprop:Generator_RowDeletedName="JoinActiveStaffSizeRowDeleted" msprop:Generator_UserTableName="JoinActiveStaffSize" msprop:Generator_RowChangedName="JoinActiveStaffSizeRowChanged" msprop:Generator_RowEvArgName="JoinActiveStaffSizeRowChangeEvent" msprop:Generator_RowClassName="JoinActiveStaffSizeRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="nameSize" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnnameSize" msprop:Generator_ColumnPropNameInRow="nameSize" msprop:Generator_ColumnPropNameInTable="nameSizeColumn" msprop:Generator_UserColumnName="nameSize" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="234" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -718,12 +749,12 @@ WHERE        (staff_id =
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
-      <msdata:Relationship name="FK__Active_St__staff__1BFD2C07" msdata:parent="Staff" msdata:child="Active_Staff" msdata:parentkey="staff_id" msdata:childkey="staff_id" msprop:Generator_UserChildTable="Active_Staff" msprop:Generator_ChildPropName="GetActive_StaffRows" msprop:Generator_UserRelationName="FK__Active_St__staff__1BFD2C07" msprop:Generator_ParentPropName="StaffRow" msprop:Generator_RelationVarName="relationFK__Active_St__staff__1BFD2C07" msprop:Generator_UserParentTable="Staff" />
-      <msdata:Relationship name="FK__Assignmen__party__1ED998B2" msdata:parent="Party" msdata:child="Assignments" msdata:parentkey="party_id" msdata:childkey="party_id" msprop:Generator_UserChildTable="Assignments" msprop:Generator_ChildPropName="GetAssignmentsRows" msprop:Generator_UserRelationName="FK__Assignmen__party__1ED998B2" msprop:Generator_ParentPropName="PartyRow" msprop:Generator_RelationVarName="relationFK__Assignmen__party__1ED998B2" msprop:Generator_UserParentTable="Party" />
-      <msdata:Relationship name="FK__Assignmen__staff__20C1E124" msdata:parent="Staff" msdata:child="Assignments" msdata:parentkey="staff_id" msdata:childkey="staff_id" msprop:Generator_UserChildTable="Assignments" msprop:Generator_ChildPropName="GetAssignmentsRows" msprop:Generator_UserRelationName="FK__Assignmen__staff__20C1E124" msprop:Generator_ParentPropName="StaffRow" msprop:Generator_RelationVarName="relationFK__Assignmen__staff__20C1E124" msprop:Generator_UserParentTable="Staff" />
-      <msdata:Relationship name="FK__Assignmen__table__1FCDBCEB" msdata:parent="Seating" msdata:child="Assignments" msdata:parentkey="table_id" msdata:childkey="table_id" msprop:Generator_UserChildTable="Assignments" msprop:Generator_ChildPropName="GetAssignmentsRows" msprop:Generator_UserRelationName="FK__Assignmen__table__1FCDBCEB" msprop:Generator_ParentPropName="SeatingRow" msprop:Generator_RelationVarName="relationFK__Assignmen__table__1FCDBCEB" msprop:Generator_UserParentTable="Seating" />
-      <msdata:Relationship name="FK__Party_Det__party__1273C1CD" msdata:parent="Party" msdata:child="Party_Detail" msdata:parentkey="party_id" msdata:childkey="party_id" msprop:Generator_UserChildTable="Party_Detail" msprop:Generator_ChildPropName="GetParty_DetailRows" msprop:Generator_UserRelationName="FK__Party_Det__party__1273C1CD" msprop:Generator_RelationVarName="relationFK__Party_Det__party__1273C1CD" msprop:Generator_UserParentTable="Party" msprop:Generator_ParentPropName="PartyRow" />
-      <msdata:Relationship name="FK__Seating_D__table__173876EA" msdata:parent="Seating" msdata:child="Seating_Detail" msdata:parentkey="table_id" msdata:childkey="table_id" msprop:Generator_UserChildTable="Seating_Detail" msprop:Generator_ChildPropName="GetSeating_DetailRows" msprop:Generator_UserRelationName="FK__Seating_D__table__173876EA" msprop:Generator_RelationVarName="relationFK__Seating_D__table__173876EA" msprop:Generator_UserParentTable="Seating" msprop:Generator_ParentPropName="SeatingRow" />
+      <msdata:Relationship name="FK__Active_St__staff__1BFD2C07" msdata:parent="Staff" msdata:child="Active_Staff" msdata:parentkey="staff_id" msdata:childkey="staff_id" msprop:Generator_UserChildTable="Active_Staff" msprop:Generator_ChildPropName="GetActive_StaffRows" msprop:Generator_UserRelationName="FK__Active_St__staff__1BFD2C07" msprop:Generator_RelationVarName="relationFK__Active_St__staff__1BFD2C07" msprop:Generator_UserParentTable="Staff" msprop:Generator_ParentPropName="StaffRow" />
+      <msdata:Relationship name="FK__Assignmen__party__1ED998B2" msdata:parent="Party" msdata:child="Assignments" msdata:parentkey="party_id" msdata:childkey="party_id" msprop:Generator_UserChildTable="Assignments" msprop:Generator_ChildPropName="GetAssignmentsRows" msprop:Generator_UserRelationName="FK__Assignmen__party__1ED998B2" msprop:Generator_RelationVarName="relationFK__Assignmen__party__1ED998B2" msprop:Generator_UserParentTable="Party" msprop:Generator_ParentPropName="PartyRow" />
+      <msdata:Relationship name="FK__Assignmen__staff__20C1E124" msdata:parent="Staff" msdata:child="Assignments" msdata:parentkey="staff_id" msdata:childkey="staff_id" msprop:Generator_UserChildTable="Assignments" msprop:Generator_ChildPropName="GetAssignmentsRows" msprop:Generator_UserRelationName="FK__Assignmen__staff__20C1E124" msprop:Generator_RelationVarName="relationFK__Assignmen__staff__20C1E124" msprop:Generator_UserParentTable="Staff" msprop:Generator_ParentPropName="StaffRow" />
+      <msdata:Relationship name="FK__Assignmen__table__1FCDBCEB" msdata:parent="Seating" msdata:child="Assignments" msdata:parentkey="table_id" msdata:childkey="table_id" msprop:Generator_UserChildTable="Assignments" msprop:Generator_ChildPropName="GetAssignmentsRows" msprop:Generator_UserRelationName="FK__Assignmen__table__1FCDBCEB" msprop:Generator_RelationVarName="relationFK__Assignmen__table__1FCDBCEB" msprop:Generator_UserParentTable="Seating" msprop:Generator_ParentPropName="SeatingRow" />
+      <msdata:Relationship name="FK__Party_Det__party__1273C1CD" msdata:parent="Party" msdata:child="Party_Detail" msdata:parentkey="party_id" msdata:childkey="party_id" msprop:Generator_UserChildTable="Party_Detail" msprop:Generator_ChildPropName="GetParty_DetailRows" msprop:Generator_UserRelationName="FK__Party_Det__party__1273C1CD" msprop:Generator_ParentPropName="PartyRow" msprop:Generator_RelationVarName="relationFK__Party_Det__party__1273C1CD" msprop:Generator_UserParentTable="Party" />
+      <msdata:Relationship name="FK__Seating_D__table__173876EA" msdata:parent="Seating" msdata:child="Seating_Detail" msdata:parentkey="table_id" msdata:childkey="table_id" msprop:Generator_UserChildTable="Seating_Detail" msprop:Generator_ChildPropName="GetSeating_DetailRows" msprop:Generator_UserRelationName="FK__Seating_D__table__173876EA" msprop:Generator_ParentPropName="SeatingRow" msprop:Generator_RelationVarName="relationFK__Seating_D__table__173876EA" msprop:Generator_UserParentTable="Seating" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>

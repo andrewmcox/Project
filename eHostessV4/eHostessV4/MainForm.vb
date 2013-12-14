@@ -20,6 +20,7 @@
         Me.StaffTableAdapter.Fill(Me.EHostessDataSet.Staff)
         Me.SeatingTableAdapter.Fill(Me.EHostessDataSet.Seating)
         Me.AssignmentsTableAdapter.Fill(Me.EHostessDataSet.Assignments)
+        Me.JoinActiveStaffSizeTableAdapter.Fill(Me.EHostessDataSet.JoinActiveStaffSize)
         Me.ColorTables()
     End Sub
 
