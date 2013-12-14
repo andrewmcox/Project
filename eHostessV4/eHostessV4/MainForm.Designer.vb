@@ -33,9 +33,6 @@ Partial Class MainForm
         Me.PartyToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TableToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ActiveStaffDataGrid = New System.Windows.Forms.DataGridView()
-        Me.StafffnameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.StafflnameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.StaffmaxtableDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.StaffBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.EHostessDataSet = New eHostessV4.eHostessDataSet()
         Me.PartyDataGridView = New System.Windows.Forms.DataGridView()
@@ -68,12 +65,16 @@ Partial Class MainForm
         Me.AssignmentsTableAdapter = New eHostessV4.eHostessDataSetTableAdapters.AssignmentsTableAdapter()
         Me.SeatingTableAdapter = New eHostessV4.eHostessDataSetTableAdapters.SeatingTableAdapter()
         Me.AddPartyButton = New System.Windows.Forms.Button()
+        Me.JoinActiveStaffSizeBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.JoinActiveStaffSizeTableAdapter = New eHostessV4.eHostessDataSetTableAdapters.JoinActiveStaffSizeTableAdapter()
+        Me.NameSizeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.MenuStrip1.SuspendLayout()
         CType(Me.ActiveStaffDataGrid, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.StaffBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EHostessDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PartyDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PartyBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.JoinActiveStaffSizeBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Table1
@@ -143,30 +144,12 @@ Partial Class MainForm
         '
         Me.ActiveStaffDataGrid.AutoGenerateColumns = False
         Me.ActiveStaffDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.ActiveStaffDataGrid.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.StafffnameDataGridViewTextBoxColumn, Me.StafflnameDataGridViewTextBoxColumn, Me.StaffmaxtableDataGridViewTextBoxColumn})
-        Me.ActiveStaffDataGrid.DataSource = Me.StaffBindingSource
+        Me.ActiveStaffDataGrid.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.NameSizeDataGridViewTextBoxColumn})
+        Me.ActiveStaffDataGrid.DataSource = Me.JoinActiveStaffSizeBindingSource
         Me.ActiveStaffDataGrid.Location = New System.Drawing.Point(12, 43)
         Me.ActiveStaffDataGrid.Name = "ActiveStaffDataGrid"
         Me.ActiveStaffDataGrid.Size = New System.Drawing.Size(350, 439)
         Me.ActiveStaffDataGrid.TabIndex = 1
-        '
-        'StafffnameDataGridViewTextBoxColumn
-        '
-        Me.StafffnameDataGridViewTextBoxColumn.DataPropertyName = "staff_fname"
-        Me.StafffnameDataGridViewTextBoxColumn.HeaderText = "staff_fname"
-        Me.StafffnameDataGridViewTextBoxColumn.Name = "StafffnameDataGridViewTextBoxColumn"
-        '
-        'StafflnameDataGridViewTextBoxColumn
-        '
-        Me.StafflnameDataGridViewTextBoxColumn.DataPropertyName = "staff_lname"
-        Me.StafflnameDataGridViewTextBoxColumn.HeaderText = "staff_lname"
-        Me.StafflnameDataGridViewTextBoxColumn.Name = "StafflnameDataGridViewTextBoxColumn"
-        '
-        'StaffmaxtableDataGridViewTextBoxColumn
-        '
-        Me.StaffmaxtableDataGridViewTextBoxColumn.DataPropertyName = "staff_max_table"
-        Me.StaffmaxtableDataGridViewTextBoxColumn.HeaderText = "staff_max_table"
-        Me.StaffmaxtableDataGridViewTextBoxColumn.Name = "StaffmaxtableDataGridViewTextBoxColumn"
         '
         'StaffBindingSource
         '
@@ -431,6 +414,22 @@ Partial Class MainForm
         Me.AddPartyButton.Text = "Add Party"
         Me.AddPartyButton.UseVisualStyleBackColor = True
         '
+        'JoinActiveStaffSizeBindingSource
+        '
+        Me.JoinActiveStaffSizeBindingSource.DataMember = "JoinActiveStaffSize"
+        Me.JoinActiveStaffSizeBindingSource.DataSource = Me.EHostessDataSet
+        '
+        'JoinActiveStaffSizeTableAdapter
+        '
+        Me.JoinActiveStaffSizeTableAdapter.ClearBeforeFill = True
+        '
+        'NameSizeDataGridViewTextBoxColumn
+        '
+        Me.NameSizeDataGridViewTextBoxColumn.DataPropertyName = "nameSize"
+        Me.NameSizeDataGridViewTextBoxColumn.HeaderText = "nameSize"
+        Me.NameSizeDataGridViewTextBoxColumn.Name = "NameSizeDataGridViewTextBoxColumn"
+        Me.NameSizeDataGridViewTextBoxColumn.ReadOnly = True
+        '
         'MainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -468,6 +467,7 @@ Partial Class MainForm
         CType(Me.EHostessDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PartyDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PartyBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.JoinActiveStaffSizeBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -488,9 +488,6 @@ Partial Class MainForm
     Friend WithEvents PartyBindingSource As System.Windows.Forms.BindingSource
     Friend WithEvents PartyTableAdapter As eHostessV4.eHostessDataSetTableAdapters.PartyTableAdapter
     Friend WithEvents TableAdapterManager As eHostessV4.eHostessDataSetTableAdapters.TableAdapterManager
-    Friend WithEvents StafffnameDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents StafflnameDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents StaffmaxtableDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents PartyDataGridView As System.Windows.Forms.DataGridView
     Friend WithEvents DataGridViewTextBoxColumn2 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn4 As System.Windows.Forms.DataGridViewTextBoxColumn
@@ -517,5 +514,8 @@ Partial Class MainForm
     Friend WithEvents AssignmentsTableAdapter As eHostessV4.eHostessDataSetTableAdapters.AssignmentsTableAdapter
     Friend WithEvents SeatingTableAdapter As eHostessV4.eHostessDataSetTableAdapters.SeatingTableAdapter
     Friend WithEvents AddPartyButton As System.Windows.Forms.Button
+    Friend WithEvents JoinActiveStaffSizeBindingSource As System.Windows.Forms.BindingSource
+    Friend WithEvents JoinActiveStaffSizeTableAdapter As eHostessV4.eHostessDataSetTableAdapters.JoinActiveStaffSizeTableAdapter
+    Friend WithEvents NameSizeDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
 
 End Class
