@@ -134,6 +134,12 @@
     <Compile Include="PartiesForm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="PartySearchForm.Designer.vb">
+      <DependentUpon>PartySearchForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="PartySearchForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="SelectedTableForm.Designer.vb">
       <DependentUpon>SelectedTableForm.vb</DependentUpon>
     </Compile>
@@ -171,6 +177,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PartiesForm.resx">
       <DependentUpon>PartiesForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PartySearchForm.resx">
+      <DependentUpon>PartySearchForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SelectedTableForm.resx">
       <DependentUpon>SelectedTableForm.vb</DependentUpon>
