@@ -72,6 +72,7 @@ Partial Class MainForm
         Me.JoinAssignmentsPartyBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.JoinAssignmentsPartyTableAdapter = New eHostessV4.eHostessDataSetTableAdapters.JoinAssignmentsPartyTableAdapter()
         Me.Average_wait_minutesLabel1 = New System.Windows.Forms.Label()
+        Me.SearchPAartiesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Average_wait_minutesLabel = New System.Windows.Forms.Label()
         Me.MenuStrip1.SuspendLayout()
         CType(Me.ActiveStaffDataGrid, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -82,6 +83,15 @@ Partial Class MainForm
         CType(Me.PartyBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.JoinAssignmentsPartyBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
+        '
+        'Average_wait_minutesLabel
+        '
+        Average_wait_minutesLabel.AutoSize = True
+        Average_wait_minutesLabel.Location = New System.Drawing.Point(925, 551)
+        Average_wait_minutesLabel.Name = "Average_wait_minutesLabel"
+        Average_wait_minutesLabel.Size = New System.Drawing.Size(110, 13)
+        Average_wait_minutesLabel.TabIndex = 0
+        Average_wait_minutesLabel.Text = "average wait minutes:"
         '
         'Table1
         '
@@ -117,6 +127,7 @@ Partial Class MainForm
         '
         'ToolsToolStripMenuItem
         '
+        Me.ToolsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SearchPAartiesToolStripMenuItem})
         Me.ToolsToolStripMenuItem.Name = "ToolsToolStripMenuItem"
         Me.ToolsToolStripMenuItem.Size = New System.Drawing.Size(48, 20)
         Me.ToolsToolStripMenuItem.Text = "Tools"
@@ -445,15 +456,6 @@ Partial Class MainForm
         '
         Me.JoinAssignmentsPartyTableAdapter.ClearBeforeFill = True
         '
-        'Average_wait_minutesLabel
-        '
-        Average_wait_minutesLabel.AutoSize = True
-        Average_wait_minutesLabel.Location = New System.Drawing.Point(925, 551)
-        Average_wait_minutesLabel.Name = "Average_wait_minutesLabel"
-        Average_wait_minutesLabel.Size = New System.Drawing.Size(110, 13)
-        Average_wait_minutesLabel.TabIndex = 0
-        Average_wait_minutesLabel.Text = "average wait minutes:"
-        '
         'Average_wait_minutesLabel1
         '
         Me.Average_wait_minutesLabel1.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.JoinAssignmentsPartyBindingSource, "average_wait_minutes", True))
@@ -462,6 +464,12 @@ Partial Class MainForm
         Me.Average_wait_minutesLabel1.Size = New System.Drawing.Size(100, 23)
         Me.Average_wait_minutesLabel1.TabIndex = 1
         Me.Average_wait_minutesLabel1.Text = "Label3"
+        '
+        'SearchPAartiesToolStripMenuItem
+        '
+        Me.SearchPAartiesToolStripMenuItem.Name = "SearchPAartiesToolStripMenuItem"
+        Me.SearchPAartiesToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.SearchPAartiesToolStripMenuItem.Text = "Search Parties"
         '
         'MainForm
         '
@@ -556,5 +564,6 @@ Partial Class MainForm
     Friend WithEvents JoinAssignmentsPartyBindingSource As System.Windows.Forms.BindingSource
     Friend WithEvents JoinAssignmentsPartyTableAdapter As eHostessV4.eHostessDataSetTableAdapters.JoinAssignmentsPartyTableAdapter
     Friend WithEvents Average_wait_minutesLabel1 As System.Windows.Forms.Label
+    Friend WithEvents SearchPAartiesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class

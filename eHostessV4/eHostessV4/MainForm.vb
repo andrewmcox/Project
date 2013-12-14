@@ -87,4 +87,9 @@
         AddPartyForm.Show()
         Me.Hide()
     End Sub
+
+    Private Sub SearchPAartiesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SearchPAartiesToolStripMenuItem.Click
+        PartySearchForm.Show()
+        Me.Hide()
+    End Sub
 End Class

@@ -7,24 +7,49 @@
         ElseIf chk_time.Checked = False Then
             dtp_Start.Enabled = False
             dtp_End.Enabled = False
-            dtp_Start.Value = 
-
         End If
     End Sub
 
-    Private Sub chk_Party_CheckedChanged(sender As Object, e As EventArgs) Handles chk_Party.CheckedChanged
-        If chk_Party.Checked = True Then
-            txt_Party.Enabled = True
-        ElseIf chk_Party.Checked = False Then
-            txt_Party.Enabled = False
-        End If
+
+
+    Private Sub PartyBindingNavigatorSaveItem_Click(sender As Object, e As EventArgs)
+        Me.Validate()
+        Me.PartyBindingSource.EndEdit()
+        Me.TableAdapterManager.UpdateAll(Me.EHostessDataSet)
+
     End Sub
 
-    Private Sub chk_Phone_CheckedChanged(sender As Object, e As EventArgs) Handles chk_Phone.CheckedChanged
-        If chk_Phone.Checked = True Then
-            txt_Phone.Enabled = True
-        ElseIf chk_Phone.Checked = False Then
-            txt_Phone.Enabled = False
-        End If
+    Private Sub PartySearchForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'TODO: This line of code loads data into the 'EHostessDataSet.Party' table. You can move, or remove it, as needed.
+        Me.PartyTableAdapter.Fill(Me.EHostessDataSet.Party)
+
     End Sub
+
+    Private Sub btn_Search_Click(sender As Object, e As EventArgs) Handles btn_Search.Click
+        Dim party_temp As String = ""
+        Dim phone_temp As String = ""
+        Dim start_temp As DateTime = "1901-01-01 01:00:00.300"
+        Dim end_temp As DateTime = DateTime.Now
+
+        If txt_Party.Text <> Nothing Then
+            party_temp = txt_Party.Text
+        End If
+
+        If txt_Phone.Text <> Nothing Then
+            phone_temp = txt_Phone.Text
+        End If
+
+        If chk_time.Checked = True Then
+            start_temp = dtp_Start.Value
+            end_temp = dtp_End.Value
+        End If
+
+        Me.PartyTableAdapter.FillBySearchParams(Me.EHostessDataSet.Party, party_temp, phone_temp, start_temp, end_temp)
+    End Sub
+
+    Private Sub SelectTableForm_Closed(ByVal sender As Object, _
+        ByVal e As System.EventArgs) Handles MyBase.Closed
+        MainForm.Show()
+    End Sub
+
 End Class
