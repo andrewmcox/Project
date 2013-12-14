@@ -60,6 +60,8 @@
         'size with staff members that can handle that party/table.
         'Make sure to update the Party Seated Time and Status
         'Update Assignments Table
+        AssignTableForm.LoadTable(Me.tableID)
+        AssignTableForm.Show()
     End Sub
 
     Private Sub CompleteAssignmentButton_Click(sender As Object, e As EventArgs) Handles CompleteAssignmentButton.Click
@@ -68,5 +70,9 @@
 
         'refresh table after we make the updates
         Me.LoadTable(Me.tableID)
+    End Sub
+
+    Private Sub Seating_DetailListBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles Seating_DetailListBox.SelectedIndexChanged
+
     End Sub
 End Class
