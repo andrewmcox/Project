@@ -1,9 +1,11 @@
 ﻿Public Class AssignTableForm
     Dim tableID As Integer = 0
+    Dim previousForm = SelectedTableForm
 
-    Friend Sub LoadTable(ByVal TableID As Integer)
+    Friend Sub LoadTable(ByVal TableID As Integer, ByRef selectedTableForm As SelectedTableForm)
         'Hold for later use in queries and stores.
         Me.tableID = TableID
+        previousForm = selectedTableForm
 
         Me.SeatingTableAdapter.ClearBeforeFill = True
         Me.SeatingTableAdapter.FillByTableID(Me.EHostessDataSet.Seating, Me.tableID)
@@ -12,39 +14,40 @@
         Me.Seating_DetailTableAdapter.FillByTableID(Me.EHostessDataSet.Seating_Detail, Me.tableID)
 
         Me.ActiveStaffNamesTableAdapter.ClearBeforeFill = True
-        'Not sure what to put here ---- Me.ActiveStaffNamesTableAdapter.FillByMaxTable()
+        Me.ActiveStaffNamesTableAdapter.FillByMaxTable(Me.EHostessDataSet.ActiveStaffNames, Me.SeatingTableAdapter.FillByMaxTableSizeByTableID(Me.tableID))
+
+        Me.PartyTableAdapter.ClearBeforeFill = True
+        Me.PartyTableAdapter.FillByWaitingParties(Me.EHostessDataSet.Party)
     End Sub
 
     Private Sub SelectTableForm_Closed(ByVal sender As Object, _
     ByVal e As System.EventArgs) Handles MyBase.Closed
-        MainForm.Show()
+        previousForm.Show()
     End Sub
 
     Private Sub AssignTableForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'TODO: This line of code loads data into the 'EHostessDataSet.JoinActiveStaffSize' table. You can move, or remove it, as needed.
-        Me.JoinActiveStaffSizeTableAdapter.Fill(Me.EHostessDataSet.JoinActiveStaffSize)
-        'TODO: This line of code loads data into the 'EHostessDataSet.Seating_Detail' table. You can move, or remove it, as needed.
-        ' Me.Seating_DetailTableAdapter.Fill(Me.EHostessDataSet.Seating_Detail)
-        'TODO: This line of code loads data into the 'EHostessDataSet.Seating' table. You can move, or remove it, as needed.
 
     End Sub
 
     Private Sub AssignForm_Activated(ByVal sender As Object, _
     ByVal e As System.EventArgs) Handles MyBase.Activated
-        Me.LoadTable(Me.tableID)
+        Me.LoadTable(Me.tableID, Me.previousForm)
     End Sub
 
-
-    Private Sub Label2_Click(sender As Object, e As EventArgs) Handles Label2.Click
-
+    Private Sub lb_party_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lb_party.SelectedIndexChanged
+        If lb_party.SelectedValue <> Nothing Then
+            Me.Party_DetailTableAdapter.FillByByPartyID(Me.EHostessDataSet.Party_Detail, lb_party.SelectedValue)
+        End If
     End Sub
 
-    'Private Sub FillByMaxTableToolStripButton_Click(sender As Object, e As EventArgs)
-    '   Try
-    '      Me.ActiveStaffNamesTableAdapter.FillByMaxTable(Me.EHostessDataSet.ActiveStaffNames, CType(TableMaxToolStripTextBox.Text, Decimal))
-    ' Catch ex As System.Exception
-    '    System.Windows.Forms.MessageBox.Show(ex.Message)
-    'End Try
+    Private Sub btn_Assign_Click(sender As Object, e As EventArgs) Handles btn_Assign.Click
+        Me.AssignmentsTableAdapter.InsertAssignmentUpdateParty(Me.tableID, lb_party.SelectedValue, lb_staff.SelectedValue, DateTime.Now)
+        previousForm.show()
+        Me.Close()
+    End Sub
 
-    'End Sub
+    Private Sub DoneToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DoneToolStripMenuItem.Click
+        previousForm.Show()
+        Me.Close()
+    End Sub
 End Class

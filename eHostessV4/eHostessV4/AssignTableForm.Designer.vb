@@ -38,7 +38,9 @@ Partial Class AssignTableForm
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.lb_party = New System.Windows.Forms.ListBox()
+        Me.PartyBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.lb_PartyAttributes = New System.Windows.Forms.ListBox()
+        Me.PartyDetailBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.btn_Assign = New System.Windows.Forms.Button()
@@ -48,17 +50,22 @@ Partial Class AssignTableForm
         Me.Seating_DetailBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.TableAdapterManager = New eHostessV4.eHostessDataSetTableAdapters.TableAdapterManager()
         Me.Table_attributeListBox = New System.Windows.Forms.ListBox()
-        Me.JoinActiveStaffSizeBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.JoinActiveStaffSizeTableAdapter = New eHostessV4.eHostessDataSetTableAdapters.JoinActiveStaffSizeTableAdapter()
         Me.ActiveStaffNamesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.ActiveStaffNamesTableAdapter = New eHostessV4.eHostessDataSetTableAdapters.ActiveStaffNamesTableAdapter()
-        Me.FullNameListBox = New System.Windows.Forms.ListBox()
+        Me.lb_staff = New System.Windows.Forms.ListBox()
+        Me.PartyTableAdapter = New eHostessV4.eHostessDataSetTableAdapters.PartyTableAdapter()
+        Me.Party_DetailTableAdapter = New eHostessV4.eHostessDataSetTableAdapters.Party_DetailTableAdapter()
+        Me.AssignmentsTableAdapter = New eHostessV4.eHostessDataSetTableAdapters.AssignmentsTableAdapter()
+        Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
+        Me.DoneToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         CType(Me.SeatingBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EHostessDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PartyBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PartyDetailBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SeatingDetailBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Seating_DetailBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.JoinActiveStaffSizeBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ActiveStaffNamesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'ShapeContainer1
@@ -178,19 +185,35 @@ Partial Class AssignTableForm
         '
         'lb_party
         '
+        Me.lb_party.DataSource = Me.PartyBindingSource
+        Me.lb_party.DisplayMember = "party_name"
         Me.lb_party.FormattingEnabled = True
         Me.lb_party.Location = New System.Drawing.Point(171, 213)
         Me.lb_party.Name = "lb_party"
         Me.lb_party.Size = New System.Drawing.Size(253, 160)
         Me.lb_party.TabIndex = 11
+        Me.lb_party.ValueMember = "party_id"
+        '
+        'PartyBindingSource
+        '
+        Me.PartyBindingSource.DataMember = "Party"
+        Me.PartyBindingSource.DataSource = Me.EHostessDataSet
         '
         'lb_PartyAttributes
         '
+        Me.lb_PartyAttributes.DataSource = Me.PartyDetailBindingSource
+        Me.lb_PartyAttributes.DisplayMember = "preference"
         Me.lb_PartyAttributes.FormattingEnabled = True
         Me.lb_PartyAttributes.Location = New System.Drawing.Point(480, 230)
         Me.lb_PartyAttributes.Name = "lb_PartyAttributes"
         Me.lb_PartyAttributes.Size = New System.Drawing.Size(210, 95)
         Me.lb_PartyAttributes.TabIndex = 12
+        Me.lb_PartyAttributes.ValueMember = "party_id"
+        '
+        'PartyDetailBindingSource
+        '
+        Me.PartyDetailBindingSource.DataMember = "Party_Detail"
+        Me.PartyDetailBindingSource.DataSource = Me.EHostessDataSet
         '
         'Label6
         '
@@ -263,15 +286,6 @@ Partial Class AssignTableForm
         Me.Table_attributeListBox.TabIndex = 1
         Me.Table_attributeListBox.ValueMember = "table_id"
         '
-        'JoinActiveStaffSizeBindingSource
-        '
-        Me.JoinActiveStaffSizeBindingSource.DataMember = "JoinActiveStaffSize"
-        Me.JoinActiveStaffSizeBindingSource.DataSource = Me.EHostessDataSet
-        '
-        'JoinActiveStaffSizeTableAdapter
-        '
-        Me.JoinActiveStaffSizeTableAdapter.ClearBeforeFill = True
-        '
         'ActiveStaffNamesBindingSource
         '
         Me.ActiveStaffNamesBindingSource.DataMember = "ActiveStaffNames"
@@ -281,24 +295,51 @@ Partial Class AssignTableForm
         '
         Me.ActiveStaffNamesTableAdapter.ClearBeforeFill = True
         '
-        'FullNameListBox
+        'lb_staff
         '
-        Me.FullNameListBox.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.ActiveStaffNamesBindingSource, "FullName", True))
-        Me.FullNameListBox.DataSource = Me.ActiveStaffNamesBindingSource
-        Me.FullNameListBox.DisplayMember = "FullName"
-        Me.FullNameListBox.FormattingEnabled = True
-        Me.FullNameListBox.Location = New System.Drawing.Point(480, 43)
-        Me.FullNameListBox.Name = "FullNameListBox"
-        Me.FullNameListBox.Size = New System.Drawing.Size(210, 95)
-        Me.FullNameListBox.TabIndex = 1
-        Me.FullNameListBox.ValueMember = "staff_id"
+        Me.lb_staff.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.ActiveStaffNamesBindingSource, "FullName", True))
+        Me.lb_staff.DataSource = Me.ActiveStaffNamesBindingSource
+        Me.lb_staff.DisplayMember = "FullName"
+        Me.lb_staff.FormattingEnabled = True
+        Me.lb_staff.Location = New System.Drawing.Point(480, 43)
+        Me.lb_staff.Name = "lb_staff"
+        Me.lb_staff.Size = New System.Drawing.Size(210, 95)
+        Me.lb_staff.TabIndex = 1
+        Me.lb_staff.ValueMember = "staff_id"
+        '
+        'PartyTableAdapter
+        '
+        Me.PartyTableAdapter.ClearBeforeFill = True
+        '
+        'Party_DetailTableAdapter
+        '
+        Me.Party_DetailTableAdapter.ClearBeforeFill = True
+        '
+        'AssignmentsTableAdapter
+        '
+        Me.AssignmentsTableAdapter.ClearBeforeFill = True
+        '
+        'MenuStrip1
+        '
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DoneToolStripMenuItem})
+        Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
+        Me.MenuStrip1.Name = "MenuStrip1"
+        Me.MenuStrip1.Size = New System.Drawing.Size(756, 24)
+        Me.MenuStrip1.TabIndex = 16
+        Me.MenuStrip1.Text = "MenuStrip1"
+        '
+        'DoneToolStripMenuItem
+        '
+        Me.DoneToolStripMenuItem.Name = "DoneToolStripMenuItem"
+        Me.DoneToolStripMenuItem.Size = New System.Drawing.Size(47, 20)
+        Me.DoneToolStripMenuItem.Text = "Done"
         '
         'AssignTableForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(756, 417)
-        Me.Controls.Add(Me.FullNameListBox)
+        Me.Controls.Add(Me.lb_staff)
         Me.Controls.Add(Me.Table_attributeListBox)
         Me.Controls.Add(Me.btn_Assign)
         Me.Controls.Add(Me.Label7)
@@ -313,15 +354,20 @@ Partial Class AssignTableForm
         Me.Controls.Add(Me.lbl_TableID)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.MenuStrip1)
         Me.Controls.Add(Me.ShapeContainer1)
+        Me.MainMenuStrip = Me.MenuStrip1
         Me.Name = "AssignTableForm"
         Me.Text = "AssignTableForm"
         CType(Me.SeatingBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EHostessDataSet, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PartyBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PartyDetailBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SeatingDetailBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Seating_DetailBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.JoinActiveStaffSizeBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ActiveStaffNamesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.MenuStrip1.ResumeLayout(False)
+        Me.MenuStrip1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -351,9 +397,14 @@ Partial Class AssignTableForm
     Friend WithEvents Seating_DetailBindingSource As System.Windows.Forms.BindingSource
     Friend WithEvents TableAdapterManager As eHostessV4.eHostessDataSetTableAdapters.TableAdapterManager
     Friend WithEvents Table_attributeListBox As System.Windows.Forms.ListBox
-    Friend WithEvents JoinActiveStaffSizeBindingSource As System.Windows.Forms.BindingSource
-    Friend WithEvents JoinActiveStaffSizeTableAdapter As eHostessV4.eHostessDataSetTableAdapters.JoinActiveStaffSizeTableAdapter
     Friend WithEvents ActiveStaffNamesBindingSource As System.Windows.Forms.BindingSource
     Friend WithEvents ActiveStaffNamesTableAdapter As eHostessV4.eHostessDataSetTableAdapters.ActiveStaffNamesTableAdapter
-    Friend WithEvents FullNameListBox As System.Windows.Forms.ListBox
+    Friend WithEvents lb_staff As System.Windows.Forms.ListBox
+    Friend WithEvents PartyBindingSource As System.Windows.Forms.BindingSource
+    Friend WithEvents PartyTableAdapter As eHostessV4.eHostessDataSetTableAdapters.PartyTableAdapter
+    Friend WithEvents PartyDetailBindingSource As System.Windows.Forms.BindingSource
+    Friend WithEvents Party_DetailTableAdapter As eHostessV4.eHostessDataSetTableAdapters.Party_DetailTableAdapter
+    Friend WithEvents AssignmentsTableAdapter As eHostessV4.eHostessDataSetTableAdapters.AssignmentsTableAdapter
+    Friend WithEvents MenuStrip1 As System.Windows.Forms.MenuStrip
+    Friend WithEvents DoneToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 End Class

@@ -103,6 +103,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>eHostessDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="eHostessDataSet.vb">
+      <DependentUpon>eHostessDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.vb">
       <SubType>Form</SubType>
     </Compile>

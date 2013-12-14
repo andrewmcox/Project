@@ -23,6 +23,7 @@ Partial Class MainForm
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim Average_wait_minutesLabel As System.Windows.Forms.Label
         Me.Table1 = New System.Windows.Forms.Button()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -33,8 +34,10 @@ Partial Class MainForm
         Me.PartyToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TableToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ActiveStaffDataGrid = New System.Windows.Forms.DataGridView()
-        Me.StaffBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.NameSizeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.JoinActiveStaffSizeBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.EHostessDataSet = New eHostessV4.eHostessDataSet()
+        Me.StaffBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.PartyDataGridView = New System.Windows.Forms.DataGridView()
         Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -65,16 +68,19 @@ Partial Class MainForm
         Me.AssignmentsTableAdapter = New eHostessV4.eHostessDataSetTableAdapters.AssignmentsTableAdapter()
         Me.SeatingTableAdapter = New eHostessV4.eHostessDataSetTableAdapters.SeatingTableAdapter()
         Me.AddPartyButton = New System.Windows.Forms.Button()
-        Me.JoinActiveStaffSizeBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.JoinActiveStaffSizeTableAdapter = New eHostessV4.eHostessDataSetTableAdapters.JoinActiveStaffSizeTableAdapter()
-        Me.NameSizeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.JoinAssignmentsPartyBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.JoinAssignmentsPartyTableAdapter = New eHostessV4.eHostessDataSetTableAdapters.JoinAssignmentsPartyTableAdapter()
+        Me.Average_wait_minutesLabel1 = New System.Windows.Forms.Label()
+        Average_wait_minutesLabel = New System.Windows.Forms.Label()
         Me.MenuStrip1.SuspendLayout()
         CType(Me.ActiveStaffDataGrid, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.StaffBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.JoinActiveStaffSizeBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EHostessDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.StaffBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PartyDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PartyBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.JoinActiveStaffSizeBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.JoinAssignmentsPartyBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Table1
@@ -151,15 +157,27 @@ Partial Class MainForm
         Me.ActiveStaffDataGrid.Size = New System.Drawing.Size(350, 439)
         Me.ActiveStaffDataGrid.TabIndex = 1
         '
-        'StaffBindingSource
+        'NameSizeDataGridViewTextBoxColumn
         '
-        Me.StaffBindingSource.DataMember = "Staff"
-        Me.StaffBindingSource.DataSource = Me.EHostessDataSet
+        Me.NameSizeDataGridViewTextBoxColumn.DataPropertyName = "nameSize"
+        Me.NameSizeDataGridViewTextBoxColumn.HeaderText = "nameSize"
+        Me.NameSizeDataGridViewTextBoxColumn.Name = "NameSizeDataGridViewTextBoxColumn"
+        Me.NameSizeDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'JoinActiveStaffSizeBindingSource
+        '
+        Me.JoinActiveStaffSizeBindingSource.DataMember = "JoinActiveStaffSize"
+        Me.JoinActiveStaffSizeBindingSource.DataSource = Me.EHostessDataSet
         '
         'EHostessDataSet
         '
         Me.EHostessDataSet.DataSetName = "eHostessDataSet"
         Me.EHostessDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'StaffBindingSource
+        '
+        Me.StaffBindingSource.DataMember = "Staff"
+        Me.StaffBindingSource.DataSource = Me.EHostessDataSet
         '
         'PartyDataGridView
         '
@@ -414,27 +432,44 @@ Partial Class MainForm
         Me.AddPartyButton.Text = "Add Party"
         Me.AddPartyButton.UseVisualStyleBackColor = True
         '
-        'JoinActiveStaffSizeBindingSource
-        '
-        Me.JoinActiveStaffSizeBindingSource.DataMember = "JoinActiveStaffSize"
-        Me.JoinActiveStaffSizeBindingSource.DataSource = Me.EHostessDataSet
-        '
         'JoinActiveStaffSizeTableAdapter
         '
         Me.JoinActiveStaffSizeTableAdapter.ClearBeforeFill = True
         '
-        'NameSizeDataGridViewTextBoxColumn
+        'JoinAssignmentsPartyBindingSource
         '
-        Me.NameSizeDataGridViewTextBoxColumn.DataPropertyName = "nameSize"
-        Me.NameSizeDataGridViewTextBoxColumn.HeaderText = "nameSize"
-        Me.NameSizeDataGridViewTextBoxColumn.Name = "NameSizeDataGridViewTextBoxColumn"
-        Me.NameSizeDataGridViewTextBoxColumn.ReadOnly = True
+        Me.JoinAssignmentsPartyBindingSource.DataMember = "JoinAssignmentsParty"
+        Me.JoinAssignmentsPartyBindingSource.DataSource = Me.EHostessDataSet
+        '
+        'JoinAssignmentsPartyTableAdapter
+        '
+        Me.JoinAssignmentsPartyTableAdapter.ClearBeforeFill = True
+        '
+        'Average_wait_minutesLabel
+        '
+        Average_wait_minutesLabel.AutoSize = True
+        Average_wait_minutesLabel.Location = New System.Drawing.Point(925, 551)
+        Average_wait_minutesLabel.Name = "Average_wait_minutesLabel"
+        Average_wait_minutesLabel.Size = New System.Drawing.Size(110, 13)
+        Average_wait_minutesLabel.TabIndex = 0
+        Average_wait_minutesLabel.Text = "average wait minutes:"
+        '
+        'Average_wait_minutesLabel1
+        '
+        Me.Average_wait_minutesLabel1.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.JoinAssignmentsPartyBindingSource, "average_wait_minutes", True))
+        Me.Average_wait_minutesLabel1.Location = New System.Drawing.Point(1041, 551)
+        Me.Average_wait_minutesLabel1.Name = "Average_wait_minutesLabel1"
+        Me.Average_wait_minutesLabel1.Size = New System.Drawing.Size(100, 23)
+        Me.Average_wait_minutesLabel1.TabIndex = 1
+        Me.Average_wait_minutesLabel1.Text = "Label3"
         '
         'MainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1274, 622)
+        Me.Controls.Add(Average_wait_minutesLabel)
+        Me.Controls.Add(Me.Average_wait_minutesLabel1)
         Me.Controls.Add(Me.AddPartyButton)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
@@ -463,11 +498,12 @@ Partial Class MainForm
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
         CType(Me.ActiveStaffDataGrid, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.StaffBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.JoinActiveStaffSizeBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EHostessDataSet, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.StaffBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PartyDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PartyBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.JoinActiveStaffSizeBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.JoinAssignmentsPartyBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -517,5 +553,8 @@ Partial Class MainForm
     Friend WithEvents JoinActiveStaffSizeBindingSource As System.Windows.Forms.BindingSource
     Friend WithEvents JoinActiveStaffSizeTableAdapter As eHostessV4.eHostessDataSetTableAdapters.JoinActiveStaffSizeTableAdapter
     Friend WithEvents NameSizeDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents JoinAssignmentsPartyBindingSource As System.Windows.Forms.BindingSource
+    Friend WithEvents JoinAssignmentsPartyTableAdapter As eHostessV4.eHostessDataSetTableAdapters.JoinAssignmentsPartyTableAdapter
+    Friend WithEvents Average_wait_minutesLabel1 As System.Windows.Forms.Label
 
 End Class

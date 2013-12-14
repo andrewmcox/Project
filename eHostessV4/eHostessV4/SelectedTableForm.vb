@@ -1,6 +1,7 @@
 ﻿Public Class SelectedTableForm
     Dim tableID As Integer = 0
     Dim assigned As Boolean = False
+
     Private Sub DoneToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DoneToolStripMenuItem.Click
         Me.Close()
         MainForm.Show()
@@ -48,31 +49,31 @@
         End If
     End Sub
 
-    Private Sub SeatingBindingNavigatorSaveItem_Click(sender As Object, e As EventArgs)
-        Me.Validate()
-        Me.SeatingBindingSource.EndEdit()
-        Me.TableAdapterManager.UpdateAll(Me.EHostessDataSet)
-
-    End Sub
-
     Private Sub AssignTableButton_Click(sender As Object, e As EventArgs) Handles AssignTableButton.Click
         'Launch the form to show the available parties matched by smoking and 
         'size with staff members that can handle that party/table.
         'Make sure to update the Party Seated Time and Status
         'Update Assignments Table
-        AssignTableForm.LoadTable(Me.tableID)
-        AssignTableForm.Show()
+
+        If Me.PartyTableAdapter.CountOfWaitingParties > 0 Then
+            AssignTableForm.LoadTable(Me.tableID, Me)
+            AssignTableForm.Show()
+        Else
+            MsgBox("There are no parties currently waiting.. Calm down.", , "Warning")
+
+        End If
+
+        
     End Sub
 
     Private Sub CompleteAssignmentButton_Click(sender As Object, e As EventArgs) Handles CompleteAssignmentButton.Click
         'Execute complete of assignment - should update the Party Table (Completed Status?) Waiting, Seated, Paid, Completed?
         'Assignments Table - remove row?
 
+        Me.AssignmentsTableAdapter.CompleteAssignmentByTableID(Me.tableID)
+
         'refresh table after we make the updates
         Me.LoadTable(Me.tableID)
     End Sub
 
-    Private Sub Seating_DetailListBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles Seating_DetailListBox.SelectedIndexChanged
-
-    End Sub
 End Class

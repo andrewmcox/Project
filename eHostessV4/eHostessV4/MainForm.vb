@@ -2,6 +2,7 @@
     Dim myButtons() As Button = {}
 
     Private Sub MainForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        
         'Setup the buttons
         myButtons = {Table1, Table2, Table3,
                                      Table4, Table5, Table6,
@@ -14,9 +15,8 @@
 
     Private Sub MainForm_Activated(ByVal sender As Object, _
     ByVal e As System.EventArgs) Handles MyBase.Activated
-        'TODO: This line of code loads data into the 'EHostessDataSet.Party' table. You can move, or remove it, as needed.
-        Me.PartyTableAdapter.Fill(Me.EHostessDataSet.Party)
-        'TODO: This line of code loads data into the 'EHostessDataSet.Staff' table. You can move, or remove it, as needed.
+        Me.PartyTableAdapter.FillByWaitingParties(Me.EHostessDataSet.Party)
+        Me.JoinAssignmentsPartyTableAdapter.Fill(Me.EHostessDataSet.JoinAssignmentsParty)
         Me.StaffTableAdapter.Fill(Me.EHostessDataSet.Staff)
         Me.SeatingTableAdapter.Fill(Me.EHostessDataSet.Seating)
         Me.AssignmentsTableAdapter.Fill(Me.EHostessDataSet.Assignments)
