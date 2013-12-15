@@ -45,10 +45,9 @@ Partial Class SelectedTableForm
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.DoneToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.EHostessDataSet = New eHostessV4.eHostessDataSet()
-        Me.SeatingBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.SeatingTableAdapter = New eHostessV4.eHostessDataSetTableAdapters.SeatingTableAdapter()
-        Me.TableAdapterManager = New eHostessV4.eHostessDataSetTableAdapters.TableAdapterManager()
         Me.Table_idLabel1 = New System.Windows.Forms.Label()
+        Me.SeatingBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Table_maxLabel1 = New System.Windows.Forms.Label()
         Me.Table_smokingLabel1 = New System.Windows.Forms.Label()
         Me.Table_xLabel1 = New System.Windows.Forms.Label()
@@ -60,21 +59,21 @@ Partial Class SelectedTableForm
         Me.RectangleShape2 = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
         Me.RectangleShape1 = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.Seating_DetailBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Seating_DetailTableAdapter = New eHostessV4.eHostessDataSetTableAdapters.Seating_DetailTableAdapter()
         Me.Seating_DetailListBox = New System.Windows.Forms.ListBox()
+        Me.Seating_DetailBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.StaffBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.StaffTableAdapter = New eHostessV4.eHostessDataSetTableAdapters.StaffTableAdapter()
         Me.Staff_idLabel1 = New System.Windows.Forms.Label()
+        Me.StaffBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Staff_fnameLabel1 = New System.Windows.Forms.Label()
         Me.Staff_lnameLabel1 = New System.Windows.Forms.Label()
         Me.Staff_max_tableLabel1 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.PartyBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.PartyTableAdapter = New eHostessV4.eHostessDataSetTableAdapters.PartyTableAdapter()
         Me.Party_idLabel1 = New System.Windows.Forms.Label()
+        Me.PartyBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Party_nameLabel1 = New System.Windows.Forms.Label()
         Me.Party_phoneLabel1 = New System.Windows.Forms.Label()
         Me.Party_smokingLabel1 = New System.Windows.Forms.Label()
@@ -89,8 +88,11 @@ Partial Class SelectedTableForm
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Party_DetailTableAdapter = New eHostessV4.eHostessDataSetTableAdapters.Party_DetailTableAdapter()
-        Me.Party_DetailBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.PreferenceListBox = New System.Windows.Forms.ListBox()
+        Me.Party_DetailBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.AssignedTimeLabel = New System.Windows.Forms.Label()
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.TableAdapterManager = New eHostessV4.eHostessDataSetTableAdapters.TableAdapterManager()
         Table_idLabel = New System.Windows.Forms.Label()
         Table_maxLabel = New System.Windows.Forms.Label()
         Table_smokingLabel = New System.Windows.Forms.Label()
@@ -310,26 +312,9 @@ Partial Class SelectedTableForm
         Me.EHostessDataSet.DataSetName = "eHostessDataSet"
         Me.EHostessDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
-        'SeatingBindingSource
-        '
-        Me.SeatingBindingSource.DataMember = "Seating"
-        Me.SeatingBindingSource.DataSource = Me.EHostessDataSet
-        '
         'SeatingTableAdapter
         '
         Me.SeatingTableAdapter.ClearBeforeFill = True
-        '
-        'TableAdapterManager
-        '
-        Me.TableAdapterManager.Active_StaffTableAdapter = Nothing
-        Me.TableAdapterManager.AssignmentsTableAdapter = Nothing
-        Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
-        Me.TableAdapterManager.Party_DetailTableAdapter = Nothing
-        Me.TableAdapterManager.PartyTableAdapter = Nothing
-        Me.TableAdapterManager.Seating_DetailTableAdapter = Nothing
-        Me.TableAdapterManager.SeatingTableAdapter = Me.SeatingTableAdapter
-        Me.TableAdapterManager.StaffTableAdapter = Nothing
-        Me.TableAdapterManager.UpdateOrder = eHostessV4.eHostessDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         '
         'Table_idLabel1
         '
@@ -339,6 +324,11 @@ Partial Class SelectedTableForm
         Me.Table_idLabel1.Size = New System.Drawing.Size(100, 23)
         Me.Table_idLabel1.TabIndex = 4
         Me.Table_idLabel1.Text = "Label1"
+        '
+        'SeatingBindingSource
+        '
+        Me.SeatingBindingSource.DataMember = "Seating"
+        Me.SeatingBindingSource.DataSource = Me.EHostessDataSet
         '
         'Table_maxLabel1
         '
@@ -432,11 +422,6 @@ Partial Class SelectedTableForm
         Me.Label1.TabIndex = 18
         Me.Label1.Text = "Table Details"
         '
-        'Seating_DetailBindingSource
-        '
-        Me.Seating_DetailBindingSource.DataMember = "Seating_Detail"
-        Me.Seating_DetailBindingSource.DataSource = Me.EHostessDataSet
-        '
         'Seating_DetailTableAdapter
         '
         Me.Seating_DetailTableAdapter.ClearBeforeFill = True
@@ -452,6 +437,11 @@ Partial Class SelectedTableForm
         Me.Seating_DetailListBox.TabIndex = 0
         Me.Seating_DetailListBox.ValueMember = "table_id"
         '
+        'Seating_DetailBindingSource
+        '
+        Me.Seating_DetailBindingSource.DataMember = "Seating_Detail"
+        Me.Seating_DetailBindingSource.DataSource = Me.EHostessDataSet
+        '
         'Label2
         '
         Me.Label2.AutoSize = True
@@ -461,11 +451,6 @@ Partial Class SelectedTableForm
         Me.Label2.Size = New System.Drawing.Size(81, 13)
         Me.Label2.TabIndex = 19
         Me.Label2.Text = "Table Attributes"
-        '
-        'StaffBindingSource
-        '
-        Me.StaffBindingSource.DataMember = "Staff"
-        Me.StaffBindingSource.DataSource = Me.EHostessDataSet
         '
         'StaffTableAdapter
         '
@@ -479,6 +464,11 @@ Partial Class SelectedTableForm
         Me.Staff_idLabel1.Size = New System.Drawing.Size(100, 23)
         Me.Staff_idLabel1.TabIndex = 1
         Me.Staff_idLabel1.Text = "No Staff Assigned"
+        '
+        'StaffBindingSource
+        '
+        Me.StaffBindingSource.DataMember = "Staff"
+        Me.StaffBindingSource.DataSource = Me.EHostessDataSet
         '
         'Staff_fnameLabel1
         '
@@ -527,11 +517,6 @@ Partial Class SelectedTableForm
         Me.Label4.TabIndex = 21
         Me.Label4.Text = "Staff Details"
         '
-        'PartyBindingSource
-        '
-        Me.PartyBindingSource.DataMember = "Party"
-        Me.PartyBindingSource.DataSource = Me.EHostessDataSet
-        '
         'PartyTableAdapter
         '
         Me.PartyTableAdapter.ClearBeforeFill = True
@@ -544,6 +529,11 @@ Partial Class SelectedTableForm
         Me.Party_idLabel1.Size = New System.Drawing.Size(100, 23)
         Me.Party_idLabel1.TabIndex = 1
         Me.Party_idLabel1.Text = "No Party Assigned"
+        '
+        'PartyBindingSource
+        '
+        Me.PartyBindingSource.DataMember = "Party"
+        Me.PartyBindingSource.DataSource = Me.EHostessDataSet
         '
         'Party_nameLabel1
         '
@@ -663,11 +653,6 @@ Partial Class SelectedTableForm
         '
         Me.Party_DetailTableAdapter.ClearBeforeFill = True
         '
-        'Party_DetailBindingSource
-        '
-        Me.Party_DetailBindingSource.DataMember = "Party_Detail"
-        Me.Party_DetailBindingSource.DataSource = Me.EHostessDataSet
-        '
         'PreferenceListBox
         '
         Me.PreferenceListBox.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.Party_DetailBindingSource, "preference", True))
@@ -679,11 +664,43 @@ Partial Class SelectedTableForm
         Me.PreferenceListBox.Size = New System.Drawing.Size(108, 147)
         Me.PreferenceListBox.TabIndex = 1
         '
+        'Party_DetailBindingSource
+        '
+        Me.Party_DetailBindingSource.DataMember = "Party_Detail"
+        Me.Party_DetailBindingSource.DataSource = Me.EHostessDataSet
+        '
+        'AssignedTimeLabel
+        '
+        Me.AssignedTimeLabel.AutoSize = True
+        Me.AssignedTimeLabel.Location = New System.Drawing.Point(658, 366)
+        Me.AssignedTimeLabel.Name = "AssignedTimeLabel"
+        Me.AssignedTimeLabel.Size = New System.Drawing.Size(171, 13)
+        Me.AssignedTimeLabel.TabIndex = 28
+        Me.AssignedTimeLabel.Text = "Seated time: 3945435432  minutes"
+        '
+        'Timer1
+        '
+        Me.Timer1.Interval = 5000
+        '
+        'TableAdapterManager
+        '
+        Me.TableAdapterManager.Active_StaffTableAdapter = Nothing
+        Me.TableAdapterManager.AssignmentsTableAdapter = Nothing
+        Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
+        Me.TableAdapterManager.Connection = Nothing
+        Me.TableAdapterManager.Party_DetailTableAdapter = Nothing
+        Me.TableAdapterManager.PartyTableAdapter = Nothing
+        Me.TableAdapterManager.Seating_DetailTableAdapter = Nothing
+        Me.TableAdapterManager.SeatingTableAdapter = Nothing
+        Me.TableAdapterManager.StaffTableAdapter = Nothing
+        Me.TableAdapterManager.UpdateOrder = eHostessV4.eHostessDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
+        '
         'SelectedTableForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1276, 462)
+        Me.Controls.Add(Me.AssignedTimeLabel)
         Me.Controls.Add(Me.PreferenceListBox)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.Label6)
@@ -799,4 +816,6 @@ Partial Class SelectedTableForm
     Friend WithEvents Party_DetailTableAdapter As eHostessV4.eHostessDataSetTableAdapters.Party_DetailTableAdapter
     Friend WithEvents Party_DetailBindingSource As System.Windows.Forms.BindingSource
     Friend WithEvents PreferenceListBox As System.Windows.Forms.ListBox
+    Friend WithEvents AssignedTimeLabel As System.Windows.Forms.Label
+    Friend WithEvents Timer1 As System.Windows.Forms.Timer
 End Class

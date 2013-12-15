@@ -22,8 +22,12 @@
                 'How do we persist these changes?
 
                 For l_index As Integer = 0 To Me.PartyPreferencesListBox.Items.Count - 1
-                    Dim l_text As String = CStr(Me.PartyPreferencesListBox.Items(l_index))
-                    Me.Party_DetailTableAdapter.InsertPreference(Id, l_text)
+                    Try
+                        Dim l_text As String = CStr(Me.PartyPreferencesListBox.Items(l_index))
+                        Me.Party_DetailTableAdapter.InsertPreference(Id, l_text)
+                    Catch ex As Exception
+                        'Most likely there was already an exact preference defined for this member.
+                    End Try
                 Next
 
             End If

@@ -1,6 +1,7 @@
 ﻿Public Class SelectedTableForm
     Dim tableID As Integer = 0
     Dim assigned As Boolean = False
+    Dim seatedTime As DateTime = DateTime.Now
 
     Private Sub DoneToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DoneToolStripMenuItem.Click
         Me.Close()
@@ -8,7 +9,7 @@
     End Sub
 
     Private Sub SelectedTableForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+        Me.AssignedTimeLabel.Text = ""
     End Sub
 
     Private Sub SelectTableForm_Closed(ByVal sender As Object, _
@@ -40,13 +41,22 @@
         Me.Party_DetailTableAdapter.ClearBeforeFill = True
         Me.Party_DetailTableAdapter.FillByTableID(Me.EHostessDataSet.Party_Detail, Me.tableID)
 
+
+
         If CBool(Me.AssignmentsTableAdapter.IsTableAvailableProcedure(Me.tableID) = 0) Then
+            Me.Timer1.Stop()
             Me.CompleteAssignmentButton.Enabled = False
             Me.AssignTableButton.Enabled = True
+            Me.AssignedTimeLabel.Visible = False
         Else
+            Me.seatedTime = Me.AssignmentsTableAdapter.getSeatedTimeFromTable(Me.tableID)
+            Me.calculateTimeInterval()
+            Me.Timer1.Start()
             Me.CompleteAssignmentButton.Enabled = True
             Me.AssignTableButton.Enabled = False
         End If
+
+
     End Sub
 
     Private Sub AssignTableButton_Click(sender As Object, e As EventArgs) Handles AssignTableButton.Click
@@ -55,11 +65,11 @@
         'Make sure to update the Party Seated Time and Status
         'Update Assignments Table
 
-        If Me.PartyTableAdapter.CountOfWaitingParties > 0 Then
+        If Me.PartyTableAdapter.CountOfWaitingPartiesForTableSizeAndPref(Me.tableID) > 0 Then
             AssignTableForm.LoadTable(Me.tableID, Me)
             AssignTableForm.Show()
         Else
-            MsgBox("There are no parties currently waiting.. Calm down.", , "Warning")
+            MsgBox("There are no parties currently waiting that meet this tables requirements.. Try a different table if there are parties actually waiting.", , "Warning")
 
         End If
 
@@ -76,4 +86,20 @@
         Me.LoadTable(Me.tableID)
     End Sub
 
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        Me.calculateTimeInterval()
+    End Sub
+
+    Private Sub calculateTimeInterval()
+        Dim elapsed As TimeSpan = (DateTime.Now - Me.seatedTime)
+        If elapsed.TotalDays * 60 * 24 > 120 Then
+            Me.AssignedTimeLabel.ForeColor = Color.Red
+        ElseIf elapsed.TotalDays * 60 * 24 > 60 Then
+            Me.AssignedTimeLabel.ForeColor = Color.Yellow
+        Else
+            Me.AssignedTimeLabel.ForeColor = Color.Green
+        End If
+        Me.AssignedTimeLabel.Text = "Seated Time: " + CType(Int(elapsed.TotalDays * 60 * 24), String) + " minutes elapsed"
+        Me.AssignedTimeLabel.Visible = True
+    End Sub
 End Class

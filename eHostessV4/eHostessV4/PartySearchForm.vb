@@ -52,4 +52,8 @@
         MainForm.Show()
     End Sub
 
+    Private Sub DoneToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DoneToolStripMenuItem.Click
+        MainForm.Show()
+        Me.Close()
+    End Sub
 End Class

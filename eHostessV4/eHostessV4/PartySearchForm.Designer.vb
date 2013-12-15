@@ -46,21 +46,24 @@ Partial Class PartySearchForm
         Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
+        Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
+        Me.DoneToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         CType(Me.EHostessDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PartyBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PartyDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'txt_Party
         '
-        Me.txt_Party.Location = New System.Drawing.Point(38, 39)
+        Me.txt_Party.Location = New System.Drawing.Point(38, 52)
         Me.txt_Party.Name = "txt_Party"
         Me.txt_Party.Size = New System.Drawing.Size(100, 20)
         Me.txt_Party.TabIndex = 0
         '
         'txt_Phone
         '
-        Me.txt_Phone.Location = New System.Drawing.Point(189, 39)
+        Me.txt_Phone.Location = New System.Drawing.Point(189, 52)
         Me.txt_Phone.Name = "txt_Phone"
         Me.txt_Phone.Size = New System.Drawing.Size(100, 20)
         Me.txt_Phone.TabIndex = 1
@@ -68,7 +71,7 @@ Partial Class PartySearchForm
         'chk_time
         '
         Me.chk_time.AutoSize = True
-        Me.chk_time.Location = New System.Drawing.Point(364, 12)
+        Me.chk_time.Location = New System.Drawing.Point(364, 25)
         Me.chk_time.Name = "chk_time"
         Me.chk_time.Size = New System.Drawing.Size(81, 17)
         Me.chk_time.TabIndex = 6
@@ -95,7 +98,7 @@ Partial Class PartySearchForm
         '
         'btn_Search
         '
-        Me.btn_Search.Location = New System.Drawing.Point(38, 66)
+        Me.btn_Search.Location = New System.Drawing.Point(38, 79)
         Me.btn_Search.Name = "btn_Search"
         Me.btn_Search.Size = New System.Drawing.Size(75, 23)
         Me.btn_Search.TabIndex = 9
@@ -105,7 +108,7 @@ Partial Class PartySearchForm
         'dtp_Start
         '
         Me.dtp_Start.Enabled = False
-        Me.dtp_Start.Location = New System.Drawing.Point(417, 39)
+        Me.dtp_Start.Location = New System.Drawing.Point(417, 52)
         Me.dtp_Start.Name = "dtp_Start"
         Me.dtp_Start.Size = New System.Drawing.Size(200, 20)
         Me.dtp_Start.TabIndex = 10
@@ -113,7 +116,7 @@ Partial Class PartySearchForm
         'dtp_End
         '
         Me.dtp_End.Enabled = False
-        Me.dtp_End.Location = New System.Drawing.Point(418, 66)
+        Me.dtp_End.Location = New System.Drawing.Point(418, 79)
         Me.dtp_End.Name = "dtp_End"
         Me.dtp_End.Size = New System.Drawing.Size(200, 20)
         Me.dtp_End.TabIndex = 11
@@ -150,7 +153,7 @@ Partial Class PartySearchForm
         Me.PartyDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.PartyDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn6, Me.DataGridViewTextBoxColumn7, Me.DataGridViewTextBoxColumn8})
         Me.PartyDataGridView.DataSource = Me.PartyBindingSource
-        Me.PartyDataGridView.Location = New System.Drawing.Point(38, 109)
+        Me.PartyDataGridView.Location = New System.Drawing.Point(38, 122)
         Me.PartyDataGridView.Name = "PartyDataGridView"
         Me.PartyDataGridView.Size = New System.Drawing.Size(620, 264)
         Me.PartyDataGridView.TabIndex = 12
@@ -207,7 +210,7 @@ Partial Class PartySearchForm
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(35, 23)
+        Me.Label3.Location = New System.Drawing.Point(35, 36)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(31, 13)
         Me.Label3.TabIndex = 13
@@ -216,11 +219,26 @@ Partial Class PartySearchForm
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(191, 22)
+        Me.Label4.Location = New System.Drawing.Point(191, 35)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(38, 13)
         Me.Label4.TabIndex = 14
         Me.Label4.Text = "Phone"
+        '
+        'MenuStrip1
+        '
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DoneToolStripMenuItem})
+        Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
+        Me.MenuStrip1.Name = "MenuStrip1"
+        Me.MenuStrip1.Size = New System.Drawing.Size(685, 24)
+        Me.MenuStrip1.TabIndex = 15
+        Me.MenuStrip1.Text = "MenuStrip1"
+        '
+        'DoneToolStripMenuItem
+        '
+        Me.DoneToolStripMenuItem.Name = "DoneToolStripMenuItem"
+        Me.DoneToolStripMenuItem.Size = New System.Drawing.Size(47, 20)
+        Me.DoneToolStripMenuItem.Text = "Done"
         '
         'PartySearchForm
         '
@@ -238,11 +256,15 @@ Partial Class PartySearchForm
         Me.Controls.Add(Me.chk_time)
         Me.Controls.Add(Me.txt_Phone)
         Me.Controls.Add(Me.txt_Party)
+        Me.Controls.Add(Me.MenuStrip1)
+        Me.MainMenuStrip = Me.MenuStrip1
         Me.Name = "PartySearchForm"
         Me.Text = "PartySearch"
         CType(Me.EHostessDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PartyBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PartyDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.MenuStrip1.ResumeLayout(False)
+        Me.MenuStrip1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -270,4 +292,6 @@ Partial Class PartySearchForm
     Friend WithEvents DataGridViewTextBoxColumn8 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents Label4 As System.Windows.Forms.Label
+    Friend WithEvents MenuStrip1 As System.Windows.Forms.MenuStrip
+    Friend WithEvents DoneToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 End Class

@@ -17,7 +17,7 @@
         Me.ActiveStaffNamesTableAdapter.FillByMaxTable(Me.EHostessDataSet.ActiveStaffNames, Me.SeatingTableAdapter.FillByMaxTableSizeByTableID(Me.tableID))
 
         Me.PartyTableAdapter.ClearBeforeFill = True
-        Me.PartyTableAdapter.FillByWaitingParties(Me.EHostessDataSet.Party)
+        Me.PartyTableAdapter.FillPartyByTableSmokingPrefAndWaitingStatusAndSize(Me.EHostessDataSet.Party, Me.tableID)
     End Sub
 
     Private Sub SelectTableForm_Closed(ByVal sender As Object, _
